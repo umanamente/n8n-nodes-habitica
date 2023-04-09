@@ -1,6 +1,6 @@
 import { IDataObject, ILoadOptionsFunctions, INodeListSearchResult, INodeType, INodeTypeDescription } from 'n8n-workflow';
-import { getAllTasksOperation, getAllTasksParameters } from './operations/GetTasks.node';
-import { scoreTaskOperation, scoreTaskParameters } from './operations/ScoreTask.node';
+import { getAllTasksOperation, getAllTasksParameters } from './operations/TaskGetMany.node';
+import { scoreTaskOperation, scoreTaskParameters } from './operations/TaskScore.node';
 import { habiticaApiRequest } from './operations/Common';
 
 export class Habitica implements INodeType {
