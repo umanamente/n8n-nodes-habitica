@@ -42,7 +42,7 @@ export class HabiticaApi implements ICredentialType {
 		type: 'generic',
 		properties: {
 			headers: {
-				'x-client' : "{{$credentials.AUTHOR_ID}} - {{$credentials.SCRIPT_NAME}}",
+				'x-client' : "={{$credentials.authorId}} - {{$credentials.scriptName}}",
 				'x-api-user' : '={{$credentials.apiUserToken}}',
 				'x-api-key' : '={{$credentials.apiKey}}',
 			},
