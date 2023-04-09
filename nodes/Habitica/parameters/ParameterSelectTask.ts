@@ -1,11 +1,11 @@
 import { INodeProperties } from "n8n-workflow";
 
-export const paramtereSelectTask: INodeProperties	= {
+export const parameterSelectTask: INodeProperties	= {
 	displayName: 'Task',
 	name: 'taskId',
 	type: 'resourceLocator',
 	default: { mode: 'list', value: '' },
-	description: 'Select a task to score',
+	description: 'Select a task',
 	required: true,
 	modes: [
 		{

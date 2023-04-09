@@ -46,12 +46,7 @@ export class Habitica implements INodeType {
 						value: 'task',
 					},
 					{
-						name: 'Task Checkbox',
-						value: 'taskCheckbox',
-					},
-
-					{
-						name: 'Spell',
+						name: 'Skill (Spell)',
 						value: 'spell',
 					},
 					{
@@ -88,12 +83,33 @@ export class Habitica implements INodeType {
 					getAllTasksOperation,
 					scoreTaskOperation,
 					createUserTaskOperation,
+				],
+			},
+			// eslint-disable-next-line n8n-nodes-base/node-param-default-missing
+			{
+				displayName: 'Operation',
+				name: 'operation',
+				type: 'options',
+				default: spellCastOperation.value,
+				noDataExpression: true,
+				displayOptions: {
+					show: {
+						resource: [
+							'spell',
+						],
+					},
+				},
+				options: [
 					spellCastOperation
 				],
 			},
+
+			// Task parameters
 			...getAllTasksParameters,
 			...scoreTaskParameters,
 			...createUserTaskParameters,
+
+			// Spell parameters
 			...spellCastParameters,
 		],
 	};

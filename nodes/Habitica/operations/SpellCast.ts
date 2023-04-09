@@ -1,4 +1,5 @@
-import { INodeProperties, INodePropertyOptions } from "n8n-workflow";
+import { INodeProperties, INodePropertyOptions } from 'n8n-workflow';
+import { parameterSelectTask } from "../parameters/ParameterSelectTask";
 
 // enum with spell classes: Mage, Warrior, Rogue, Healer, Transformation Items
 export enum SpellClass {
@@ -8,6 +9,15 @@ export enum SpellClass {
 	Healer = 'Healer',
 	TransformationItems = 'Transformation Items'
 }
+
+// wiki pages for each class spells (https://habitica.fandom.com/wiki/Class_System)
+export const spellClassWikiPages: { [key in SpellClass]: string } = {
+	[SpellClass.Mage]: 'https://habitica.fandom.com/wiki/Mage',
+	[SpellClass.Warrior]: 'https://habitica.fandom.com/wiki/Warrior',
+	[SpellClass.Rogue]: 'https://habitica.fandom.com/wiki/Rogue',
+	[SpellClass.Healer]: 'https://habitica.fandom.com/wiki/Healer',
+	[SpellClass.TransformationItems]: 'https://habitica.fandom.com/wiki/Transformation_Items',
+};
 
 // target type: self, party, user, task
 export enum TargetType {
@@ -26,6 +36,10 @@ export interface ISpellDefinition {
 	targetIdRequired: boolean;
 };
 
+
+// TODO: this could be generated on build-time from https://habitica.com/api/v3/content
+// TODO: add description for each spell
+
 /*
 Skill Key to Name Mapping  (https://habitica.com/apidoc/#api-User-UserCast)
 
@@ -35,7 +49,6 @@ Rogue: pickPocket="Pickpocket", backStab="Backstab", toolsOfTrade="Tools of the 
 Healer: heal="Healing Light", protectAura="Protective Aura", brightness="Searing Brightness", healAll="Blessing"
 Transformation Items: snowball="Snowball", spookySparkles="Spooky Sparkles", seafoam="Seafoam", shinySeed="Shiny Seed"
 */
-
 export const spellDefinitions: ISpellDefinition[] = [
 	// Mage
 	{
@@ -189,14 +202,14 @@ export const spellDefinitions: ISpellDefinition[] = [
 export const spellCastOperation: INodePropertyOptions =
 {
 	// "Spells" should be called "Skills" in the UI
-	name: 'Cast Skill',
+	name: 'Apply Skill',
 	value: 'spellCast',
-	action: 'Cast Skill (Spell)',
+	action: 'Apply Skill (Cast Spell)',
 	routing: {
 		request: {
 			method: 'POST',
 			// https://habitica.com/api/v3/user/class/cast/:spellId
-			url: '=user/class/cast/{{{{$parameter.spellId}}}}',
+			url: '=user/class/cast/{{$parameter.spellId}}',
 		},
 		output: {
 			postReceive: [
@@ -214,38 +227,6 @@ export const spellCastOperation: INodePropertyOptions =
 };
 
 export const spellCastParameters: INodeProperties[] = [
-	// select class
-	/*{
-		displayName: 'Skill Class',
-		name: 'skillClass',
-		type: 'options',
-		placeholder: 'Select Skill Class',
-		default: 'Mage',
-		// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
-		options: [
-			{
-				name: 'Mage',
-				value: SpellClass.Mage,
-			},
-			{
-				name: 'Warrior',
-				value: SpellClass.Warrior,
-			},
-			{
-				name: 'Rogue',
-				value: SpellClass.Rogue,
-			},
-			{
-				name: 'Healer',
-				value: SpellClass.Healer,
-			},
-			{
-				name: 'Transformation Items',
-				value: SpellClass.TransformationItems,
-			},
-		],
-	},
-	*/
 	// select spell
 	{
 		displayName: 'Skill Name',
@@ -255,42 +236,48 @@ export const spellCastParameters: INodeProperties[] = [
 		default: '',
 		// map spellDefinitions to options
 		options: spellDefinitions.map(function (spellDefinition) {
-			  // display target type for spells that require a Task or Party Member target
-				/*var targetDesctiption = "";
-				switch (spellDefinition.targetType) {
-					case TargetType.Task:
-						targetDesctiption = " (Cast on Task)";
-						break;
-					case TargetType.PartyMember:
-						targetDesctiption = " (Cast on Party Member)";
-						break;
-				}*/
-				return ({
-					name: "[" + spellDefinition.spellClass + "] " + spellDefinition.displayName + " (Cast on "+ spellDefinition.targetType + ")",
-					value: spellDefinition.name,
-				});
-			}),
+			//const spellWikiPageLink = spellClassWikiPages[spellDefinition.spellClass] + "#" + spellDefinition.displayName.replace(/ /g, "_");
+			return ({
+				name: "[" + spellDefinition.spellClass + "] " + spellDefinition.displayName + " (Cast on "+ spellDefinition.targetType + ")",
+				value: spellDefinition.name,
+				// description: spellWikiPageLink,
+			});
+		}),
+		displayOptions: {
+			show: {
+				resource: [
+					'spell',
+				],
+				operation: [
+					'spellCast',
+				],
+			},
+		},
 	},
 	// for spells that require a task target
 	{
-		displayName: 'Task',
-		name: 'taskId',
-		type: 'options',
-		placeholder: 'Select task to cast skill on',
-		default: '',
-		// map spellDefinitions to options
-		options: spellDefinitions.map(spellDefinition => ({
-			name: spellDefinition.displayName,
-			value: spellDefinition.name,
-		})),
+		...parameterSelectTask,
+		description: 'Select task to cast skill on',
+		routing: {
+			send: {
+				type: 'query',
+				property: 'targetId',
+			}
+		},
 		// only display for spells that require a task target
 		displayOptions: {
 			show: {
+				operation: [
+					'spellCast',
+				],
+				resource: [
+					'spell',
+				],
 				spellId: spellDefinitions.filter(
 					spellDefinition => spellDefinition.targetType === TargetType.Task
 				).map(spellDefinition => spellDefinition.name),
-				},
 			},
+		},
 	},
 ];
 
