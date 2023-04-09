@@ -2,7 +2,7 @@ import { IDataObject, ILoadOptionsFunctions, INodeListSearchResult, INodeType, I
 import { getAllTasksOperation, getAllTasksParameters } from './operations/TaskGetMany.node';
 import { scoreTaskOperation, scoreTaskParameters } from './operations/TaskScore.node';
 import { habiticaApiRequest } from './operations/Common';
-import { createTaskOperation, createTaskParameters } from './operations/TaskCreate.node';
+import { createUserTaskOperation, createUserTaskParameters } from './operations/TaskCreateForUser.node';
 
 export class Habitica implements INodeType {
 	description: INodeTypeDescription = {
@@ -38,11 +38,34 @@ export class Habitica implements INodeType {
 				name: 'resource',
 				type: 'options',
 				noDataExpression: true,
+				// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
 				options: [
 					{
 						name: 'Task',
 						value: 'task',
 					},
+					{
+						name: 'Task Checkbox',
+						value: 'taskCheckbox',
+					},
+
+					{
+						name: 'Spell',
+						value: 'spell',
+					},
+					{
+						name: 'Quest',
+						value: 'quest',
+					},
+					{
+						name: 'Inbox Message',
+						value: 'inboxMessage',
+					},
+					{
+						name: 'Cron',
+						value: 'cron',
+					},
+
 				],
 				default: 'task',
 			},
@@ -63,12 +86,12 @@ export class Habitica implements INodeType {
 				options: [
 					getAllTasksOperation,
 					scoreTaskOperation,
-					createTaskOperation
+					createUserTaskOperation
 				],
 			},
 			...getAllTasksParameters,
 			...scoreTaskParameters,
-			...createTaskParameters
+			...createUserTaskParameters
 		],
 	};
 

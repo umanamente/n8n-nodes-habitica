@@ -1,6 +1,6 @@
 import { INodeProperties, INodePropertyOptions } from "n8n-workflow";
 
-export const createTaskOperation: INodePropertyOptions =
+export const createUserTaskOperation: INodePropertyOptions =
 {
 	name: 'Create Task',
 	value: 'createTask',
@@ -24,7 +24,7 @@ export const createTaskOperation: INodePropertyOptions =
 	},
 };
 
-export const createTaskParameters: INodeProperties[] = [
+export const createUserTaskParameters: INodeProperties[] = [
 	// string: Task Caption (aka "text")
 	{
 		displayName: 'Task Caption',
@@ -38,7 +38,7 @@ export const createTaskParameters: INodeProperties[] = [
 					'task',
 				],
 				operation: [
-					createTaskOperation.value,
+					createUserTaskOperation.value,
 				]
 			}
 		},
@@ -79,7 +79,7 @@ export const createTaskParameters: INodeProperties[] = [
 					'task',
 				],
 				operation: [
-					createTaskOperation.value,
+					createUserTaskOperation.value,
 				]
 			}
 		},
