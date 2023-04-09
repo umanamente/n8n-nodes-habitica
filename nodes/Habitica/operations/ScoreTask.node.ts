@@ -8,8 +8,7 @@ export const scoreTaskOperation: INodePropertyOptions =
 	routing: {
 		request: {
 			method: 'POST',
-			//url: '=tasks/{{$parameter.taskId}}/score/{{$parameter.directionUp ? "up" : "down"}}',
-			url: '=tasks/{{$parameter.taskId}}/score/up',
+			url: '=tasks/{{$parameter.taskId}}/score/{{$parameter.directionUp ? "up" : "down"}}',
 		},
 		output: {
 			postReceive: [
@@ -36,6 +35,16 @@ export const scoreTaskParameters: INodeProperties[] = [
 		required: true,
 		modes: [
 			{
+				displayName: 'List',
+				name: 'list',
+				type: 'list',
+				typeOptions: {
+					searchListMethod: 'searchTasks',
+					searchable: false,
+					searchFilterRequired: false
+				}
+			},
+			{
 				displayName: 'ID',
 				name: 'id',
 				type: 'string',
@@ -50,26 +59,7 @@ export const scoreTaskParameters: INodeProperties[] = [
 					},
 				],
 				placeholder: '884046fa-bc7f-43e2-b1df-b202dc419dcf',
-				// How to use the ID in API call
-				//url: '=http://api-base-url.com/?id={{$value}}'
 			},
-			{
-				displayName: 'List',
-				name: 'list',
-				type: 'list',
-				typeOptions: {
-					// You must always provide a search method
-					// Write this method within the methods object in your base file
-					// The method must populate the list, and handle searching if searchable: true
-					searchListMethod: 'searchTasks',
-					// If you want users to be able to search the list
-					searchable: false,
-					// Set to true if you want to force users to search
-					// When true, users can't browse the list
-					// Or false if users can browse a list
-					searchFilterRequired: false
-				}
-			}
 		],
 		displayOptions: {
 			show: {
