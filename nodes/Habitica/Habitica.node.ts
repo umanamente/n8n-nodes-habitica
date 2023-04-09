@@ -2,6 +2,7 @@ import { IDataObject, ILoadOptionsFunctions, INodeListSearchResult, INodeType, I
 import { getAllTasksOperation, getAllTasksParameters } from './operations/TaskGetMany.node';
 import { scoreTaskOperation, scoreTaskParameters } from './operations/TaskScore.node';
 import { habiticaApiRequest } from './operations/Common';
+import { createTaskOperation, createTaskParameters } from './operations/TaskCreate.node';
 
 export class Habitica implements INodeType {
 	description: INodeTypeDescription = {
@@ -65,11 +66,13 @@ export class Habitica implements INodeType {
 				},
 				options: [
 					getAllTasksOperation,
-					scoreTaskOperation
+					scoreTaskOperation,
+					createTaskOperation
 				],
 			},
 			...getAllTasksParameters,
 			...scoreTaskParameters,
+			...createTaskParameters
 		],
 	};
 
