@@ -43,10 +43,6 @@ export class Habitica implements INodeType {
 						name: 'Task',
 						value: 'task',
 					},
-					{
-						name: 'Blaggaa',
-						value: 'blaha',
-					},
 				],
 				default: 'task',
 			},
