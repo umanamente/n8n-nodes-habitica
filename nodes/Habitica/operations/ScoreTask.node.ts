@@ -40,16 +40,16 @@ export const scoreTaskParameters: INodeProperties[] = [
 				name: 'id',
 				type: 'string',
 				hint: 'Enter a task ID',
-				/*validation: [
+				validation: [
 					{
 						type: 'regex',
 						properties: {
-							// "884046fa-bc7f-43e2-b1df-b202dc419dcf" or "test-api-params"
-							regex: /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|test-api-params$/,
-							errorMessage: 'The ID must look like this: "884046fa-bc7f-43e2-b1df-b202dc419dcf" or "test-api-params"',
+							// "884046fa-bc7f-43e2-b1df-b202dc419dcf"
+							regex: "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
+							errorMessage: 'The ID must look like this: "884046fa-bc7f-43e2-b1df-b202dc419dcf"',
 						},
 					},
-				],*/
+				],
 				placeholder: '884046fa-bc7f-43e2-b1df-b202dc419dcf',
 				// How to use the ID in API call
 				url: '=http://api-base-url.com/?id={{$value}}'
