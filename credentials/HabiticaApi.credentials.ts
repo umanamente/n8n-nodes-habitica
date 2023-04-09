@@ -51,7 +51,7 @@ export class HabiticaApi implements ICredentialType {
   test: ICredentialTestRequest = {
     request: {
       baseURL: 'https://habitica.com/api/v3/',
-      url: 'tasks/user',
+      url: 'tags',
     },
   };
 
