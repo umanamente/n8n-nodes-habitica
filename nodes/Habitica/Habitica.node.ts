@@ -1,8 +1,9 @@
 import { IDataObject, ILoadOptionsFunctions, INodeListSearchResult, INodeType, INodeTypeDescription } from 'n8n-workflow';
-import { getAllTasksOperation, getAllTasksParameters } from './operations/TaskGetMany.node';
+import { getAllTasksOperation, getAllTasksParameters } from './operations/TaskGetMany';
 import { scoreTaskOperation, scoreTaskParameters } from './operations/TaskScore.node';
-import { habiticaApiRequest } from './operations/Common';
-import { createUserTaskOperation, createUserTaskParameters } from './operations/TaskCreateForUser.node';
+import { habiticaApiRequest } from './operations/HabiticaApiRequest';
+import { createUserTaskOperation, createUserTaskParameters } from './operations/TaskCreateForUser';
+import { spellCastOperation, spellCastParameters } from './operations/SpellCast';
 
 export class Habitica implements INodeType {
 	description: INodeTypeDescription = {
@@ -86,12 +87,14 @@ export class Habitica implements INodeType {
 				options: [
 					getAllTasksOperation,
 					scoreTaskOperation,
-					createUserTaskOperation
+					createUserTaskOperation,
+					spellCastOperation
 				],
 			},
 			...getAllTasksParameters,
 			...scoreTaskParameters,
-			...createUserTaskParameters
+			...createUserTaskParameters,
+			...spellCastParameters,
 		],
 	};
 

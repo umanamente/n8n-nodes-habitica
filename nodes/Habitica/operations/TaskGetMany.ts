@@ -5,6 +5,7 @@ export const getAllTasksOperation: INodePropertyOptions =
 	name: 'Get Many',
 	value: 'getAll',
 	action: 'Get many tasks',
+	description: 'Get all tasks for the user',
 	routing: {
 		request: {
 			method: 'GET',
