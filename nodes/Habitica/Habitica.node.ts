@@ -1,7 +1,11 @@
-import { INodeType, INodeTypeDescription } from 'n8n-workflow';
+import { IDataObject, ILoadOptionsFunctions, INodeListSearchResult, INodePropertyOptions, INodeType, INodeTypeDescription } from 'n8n-workflow';
 import { getAllTasksOperation, getAllTasksParameters } from './operations/GetTasks.node';
 import { scoreTaskOperation, scoreTaskParameters } from './operations/ScoreTask.node';
+import { habiticaApiRequest } from './operations/Common';
 
+import {
+	LoggerProxy as Logger
+} from 'n8n-workflow';
 
 export class Habitica implements INodeType {
 	description: INodeTypeDescription = {
@@ -23,6 +27,7 @@ export class Habitica implements INodeType {
 				required: true,
 			},
 		],
+
 		requestDefaults: {
 			baseURL: 'https://habitica.com/api/v3/',
 			headers: {
@@ -72,4 +77,46 @@ export class Habitica implements INodeType {
 		],
 	};
 
+	methods = {
+		listSearch: {
+			async searchTasks(this: ILoadOptionsFunctions): Promise<INodeListSearchResult> {
+				Logger.debug('searchTasks called');
+				const tasks = await habiticaApiRequest.call(this, 'POST', 'tasks/user');
+				Logger.debug('tasks: ' + JSON.stringify(tasks));
+				return {
+					results: tasks.map((task: IDataObject) => ({
+						name: task.text,
+						value: task.id,
+					})),
+				};
+			},
+		},
+		loadOptions: {
+			async getTasks(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
+				//Logger.debug('getTasks called');
+				const returnData: INodePropertyOptions[] = [];
+				/*const tasks = await habiticaApiRequest.call(this, 'POST', 'tasks/user');
+				Logger.debug('tasks: ' + JSON.stringify(tasks));
+				for (const task of tasks) {
+					const taskDisplayName = task.text;
+					const taskId = task.id;
+
+					returnData.push({
+						name: taskDisplayName,
+						value: taskId,
+					});
+				}*/
+				returnData.push({
+					name: "Frst task",
+					value: "first task id",
+				});
+				returnData.push({
+					name: "Second task",
+					value: "second task id",
+				});
+
+				return returnData;
+			},
+		},
+	};
 }
