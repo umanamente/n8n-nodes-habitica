@@ -117,7 +117,6 @@ export class Habitica implements INodeType {
 	methods = {
 		listSearch: {
 			async searchTasks(this: ILoadOptionsFunctions): Promise<INodeListSearchResult> {
-				this.logger.debug('searchTasks called');
 				const tasks = await habiticaApiRequest.call(this, 'GET', 'tasks/user');
 				this.logger.debug("Loaded " + tasks.length + " tasks");
 				return {
@@ -127,6 +126,36 @@ export class Habitica implements INodeType {
 					})),
 				};
 			},
+			async searchUserPartyMembers(this: ILoadOptionsFunctions): Promise<INodeListSearchResult> {
+				/*
+				With a limit of 30 member per request (by default).
+				To get all members run requests against this routes (updating the lastId query parameter)
+				until you get less than 30 results (or the specified limit).
+				*/
+
+				// TODO: only up to 30 members are loaded. Need to implement pagination
+				interface IPartyMember {
+					id: string;
+					profile: {
+						name: string;
+					};
+				}
+
+				const partyMembers = await habiticaApiRequest.call(this, 'GET', 'groups/party/members');
+				this.logger.debug("Loaded " + partyMembers.length + " party members");
+				return {
+					results: partyMembers.map(function (member: IPartyMember) {
+						var memberName = "Unknown: " + member.id;
+						if (member.profile && member.profile.name) {
+							memberName = member.profile.name;
+						}
+						return ({
+							name: memberName,
+							value: member.id,
+						});
+					}),
+				};
+			}
 		},
 	};
 }

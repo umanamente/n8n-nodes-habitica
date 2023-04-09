@@ -1,14 +1,14 @@
 import { INodeProperties } from "n8n-workflow";
 
 /**
- * base parameter for selecting a task
+ * base parameter for selecting a party member
  */
-export const parameterSelectTask: INodeProperties	= {
-	displayName: 'Task',
-	name: 'taskId',
+export const parameterSelectUserPartyMember: INodeProperties	= {
+	displayName: 'Party Member',
+	name: 'partyMemberId',
 	type: 'resourceLocator',
 	default: { mode: 'list', value: '' },
-	description: 'Select a task',
+	description: 'Select a party member',
 	required: true,
 	modes: [
 		{
@@ -16,7 +16,7 @@ export const parameterSelectTask: INodeProperties	= {
 			name: 'list',
 			type: 'list',
 			typeOptions: {
-				searchListMethod: 'searchTasks',
+				searchListMethod: 'searchUserPartyMembers',
 				searchable: false,
 				searchFilterRequired: false
 			}
@@ -25,17 +25,17 @@ export const parameterSelectTask: INodeProperties	= {
 			displayName: 'ID',
 			name: 'id',
 			type: 'string',
-			hint: 'Enter a task ID',
+			hint: 'Enter a party member ID',
 			validation: [
 				{
 					type: 'regex',
 					properties: {
 						regex: "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
-						errorMessage: 'The ID must look like this: "884046fa-bc7f-43e2-b1df-b202dc419dcf"',
+						errorMessage: 'The ID must look like this: "a1abf9df-d89d-4f5e-9e80-26dc3c481042"',
 					},
 				},
 			],
-			placeholder: '884046fa-bc7f-43e2-b1df-b202dc419dcf',
+			placeholder: 'a1abf9df-d89d-4f5e-9e80-26dc3c481042',
 		},
 	],
 };
