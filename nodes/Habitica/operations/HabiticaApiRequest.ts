@@ -1,4 +1,4 @@
-import { IDataObject, IExecuteFunctions, IHookFunctions, ILoadOptionsFunctions, INodeListSearchResult, JsonObject, NodeApiError } from "n8n-workflow";
+import { IDataObject, IExecuteFunctions, IHookFunctions, ILoadOptionsFunctions, JsonObject, NodeApiError } from "n8n-workflow";
 import { OptionsWithUri } from "request";
 
 export type Context = IHookFunctions | IExecuteFunctions | ILoadOptionsFunctions;
@@ -35,35 +35,9 @@ export async function habiticaApiRequest(
 		} else {
 			return resp.data;
 		}
-		//this.logger.debug(`Habitica response [${resource}]: ${JSON.stringify(resp)}`);
-		//return resp;
 	} catch (error) {
 		this.logger.error(`Habitica error response [${resource}]: ${JSON.stringify(error)}`);
 		throw new NodeApiError(this.getNode(), error as JsonObject);
 	}
 }
 
-
-export async function taskSearch(
-	this: ILoadOptionsFunctions,
-	filter?: string,
-	paginationToken?: string,
-): Promise<INodeListSearchResult> {
-	//const query: string[] = [];
-	/*if (filter) {
-		query.push(`name contains '${filter.replace("'", "\\'")}'`);
-	}*/
-	//query.push("mimeType = 'application/vnd.google-apps.folder'");
-	const tasks = await habiticaApiRequest.call(this, 'POST', 'tasks/user', undefined, {
-		//q: query.join(' and '),
-		//pageToken: paginationToken,
-		//fields: 'nextPageToken,files(id,name,mimeType,webViewLink)',
-		//orderBy: 'name_natural',
-	});
-	return {
-		results: tasks.map((project: IDataObject) => ({
-			name: project.name,
-			value: project.id,
-		})),
-	};
-}
