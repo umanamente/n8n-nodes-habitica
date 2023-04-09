@@ -5,13 +5,12 @@ export type Context = IHookFunctions | IExecuteFunctions | ILoadOptionsFunctions
 
 export async function habiticaApiRequest(
 	this: Context,
-	method: string = 'POST',
+	method: string,
 	resource: string,
 	body: IDataObject = {},
 	qs: IDataObject = {},
 ): Promise<any> {
-	this.logger.debug(`Calling Habitica API: ${resource}`);
-	const authentication = this.getNodeParameter('authentication', 0) as string;
+	//const authentication = this.getNodeParameter('authentication', 0) as string;
 
 	// todo: get this from node parameters
 	const endpoint = 'habitica.com/api/v3/';
@@ -26,11 +25,20 @@ export async function habiticaApiRequest(
 	if (Object.keys(body).length !== 0) {
 		options.body = body;
 	}
+	this.logger.debug(`Calling Habitica API: ${resource}, options: ${JSON.stringify(options)}`);
+
 
 	try {
-		const credentialType = authentication === 'apiKey' ? 'todoistApi' : 'todoistOAuth2Api';
-		return await this.helpers.requestWithAuthentication.call(this, credentialType, options);
+		const resp = await this.helpers.requestWithAuthentication.call(this, "habiticaApi", options);
+		if (resp.success === false) {
+			throw new Error(`Habitica error response [${resource}]: ${JSON.stringify(resp)}`);
+		} else {
+			return resp.data;
+		}
+		//this.logger.debug(`Habitica response [${resource}]: ${JSON.stringify(resp)}`);
+		//return resp;
 	} catch (error) {
+		this.logger.error(`Habitica error response [${resource}]: ${JSON.stringify(error)}`);
 		throw new NodeApiError(this.getNode(), error as JsonObject);
 	}
 }

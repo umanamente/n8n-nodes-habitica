@@ -3,10 +3,6 @@ import { getAllTasksOperation, getAllTasksParameters } from './operations/GetTas
 import { scoreTaskOperation, scoreTaskParameters } from './operations/ScoreTask.node';
 import { habiticaApiRequest } from './operations/Common';
 
-import {
-	LoggerProxy as Logger
-} from 'n8n-workflow';
-
 export class Habitica implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Habitica',
@@ -80,9 +76,9 @@ export class Habitica implements INodeType {
 	methods = {
 		listSearch: {
 			async searchTasks(this: ILoadOptionsFunctions): Promise<INodeListSearchResult> {
-				Logger.debug('searchTasks called');
-				const tasks = await habiticaApiRequest.call(this, 'POST', 'tasks/user');
-				Logger.debug('tasks: ' + JSON.stringify(tasks));
+				this.logger.debug('searchTasks called');
+				const tasks = await habiticaApiRequest.call(this, 'GET', 'tasks/user');
+				this.logger.debug('tasks: ' + JSON.stringify(tasks));
 				return {
 					results: tasks.map((task: IDataObject) => ({
 						name: task.text,
@@ -93,10 +89,9 @@ export class Habitica implements INodeType {
 		},
 		loadOptions: {
 			async getTasks(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
-				//Logger.debug('getTasks called');
 				const returnData: INodePropertyOptions[] = [];
 				/*const tasks = await habiticaApiRequest.call(this, 'POST', 'tasks/user');
-				Logger.debug('tasks: ' + JSON.stringify(tasks));
+				sdLogger.debug('tasks: ' + JSON.stringify(tasks));
 				for (const task of tasks) {
 					const taskDisplayName = task.text;
 					const taskId = task.id;

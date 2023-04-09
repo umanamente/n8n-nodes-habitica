@@ -44,7 +44,6 @@ export const scoreTaskParameters: INodeProperties[] = [
 					{
 						type: 'regex',
 						properties: {
-							// "884046fa-bc7f-43e2-b1df-b202dc419dcf"
 							regex: "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
 							errorMessage: 'The ID must look like this: "884046fa-bc7f-43e2-b1df-b202dc419dcf"',
 						},
@@ -52,7 +51,7 @@ export const scoreTaskParameters: INodeProperties[] = [
 				],
 				placeholder: '884046fa-bc7f-43e2-b1df-b202dc419dcf',
 				// How to use the ID in API call
-				url: '=http://api-base-url.com/?id={{$value}}'
+				//url: '=http://api-base-url.com/?id={{$value}}'
 			},
 			{
 				displayName: 'List',
@@ -64,7 +63,7 @@ export const scoreTaskParameters: INodeProperties[] = [
 					// The method must populate the list, and handle searching if searchable: true
 					searchListMethod: 'searchTasks',
 					// If you want users to be able to search the list
-					searchable: true,
+					searchable: false,
 					// Set to true if you want to force users to search
 					// When true, users can't browse the list
 					// Or false if users can browse a list
