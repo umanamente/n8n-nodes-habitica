@@ -4,6 +4,7 @@ import { scoreTaskOperation, scoreTaskParameters } from './operations/TaskScore.
 import { habiticaApiRequest } from './operations/HabiticaApiRequest';
 import { createUserTaskOperation, createUserTaskParameters } from './operations/TaskCreateForUser';
 import { spellCastOperation, spellCastParameters } from './operations/SpellCast';
+import { habiticaNodeResources, resourceTask } from './definitions/HabiticaNodeDefinitions';
 
 export class Habitica implements INodeType {
 	description: INodeTypeDescription = {
@@ -39,31 +40,8 @@ export class Habitica implements INodeType {
 				name: 'resource',
 				type: 'options',
 				noDataExpression: true,
-				// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
-				options: [
-					{
-						name: 'Task',
-						value: 'task',
-					},
-					{
-						name: 'Skill (Spell)',
-						value: 'spell',
-					},
-					{
-						name: 'Quest',
-						value: 'quest',
-					},
-					{
-						name: 'Inbox Message',
-						value: 'inboxMessage',
-					},
-					{
-						name: 'Cron',
-						value: 'cron',
-					},
-
-				],
-				default: 'task',
+				options: habiticaNodeResources,
+				default: resourceTask.value,
 			},
 			// eslint-disable-next-line n8n-nodes-base/node-param-default-missing
 			{
@@ -75,7 +53,7 @@ export class Habitica implements INodeType {
 				displayOptions: {
 					show: {
 						resource: [
-							'task',
+							resourceTask.value,
 						],
 					},
 				},

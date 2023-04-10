@@ -1,5 +1,6 @@
 import { IDataObject, IExecuteFunctions, IHookFunctions, ILoadOptionsFunctions, JsonObject, NodeApiError } from "n8n-workflow";
 import { OptionsWithUri } from "request";
+import { habiticaApiBaseUrl } from "../definitions/HabiticaNodeDefinitions";
 
 export type Context = IHookFunctions | IExecuteFunctions | ILoadOptionsFunctions;
 
@@ -10,15 +11,10 @@ export async function habiticaApiRequest(
 	body: IDataObject = {},
 	qs: IDataObject = {},
 ): Promise<any> {
-	//const authentication = this.getNodeParameter('authentication', 0) as string;
-
-	// todo: get this from node parameters
-	const endpoint = 'habitica.com/api/v3/';
-
 	const options: OptionsWithUri = {
 		method,
 		qs,
-		uri: `https://${endpoint}${resource}`,
+		uri: `${habiticaApiBaseUrl}${resource}`,
 		json: true,
 	};
 
