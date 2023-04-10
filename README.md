@@ -9,11 +9,9 @@ Earn points, unlock gear, and find motivation to keep going.
 
 [Installation](#installation)  
 [Supported Operations](#supported-operations)  
-[Credentials](#credentials)
-[Compatibility](#compatibility)  
-[Usage](#usage) 
-[Resources](#resources)  
-[Version history](#version-history) - TODO: Add link to changelog.md
+[Credentials](#credentials)  
+[Usage](#usage)  
+[Version history](CHANGELOG.md)
 
 ## Installation
 
@@ -27,6 +25,18 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 * Get all tasks
 * Score a task
 
+### Skills (Spells)
+
+* Cast a skill
+
+### Chat messages
+
+* Send a chat message
+* Get all chat messages
+
+### Cron
+
+* Run cron
 
 
 ## Credentials
@@ -35,13 +45,5 @@ This node uses Habitica API credentials: **User ID** and **API Token**.
 
 You can find the credentials in the [Habitica settings](https://habitica.com/user/settings/api).
 
-
-## Compatibility
-
-TODO
-
-## Resources
-
-TODO: Add links to the official documentation of the node.
 
 
