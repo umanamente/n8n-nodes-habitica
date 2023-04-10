@@ -4,6 +4,7 @@ import { habiticaNodeResources, resourceTask } from './common/HabiticaNodeResour
 import { taskParameters } from './operations/tasks/Header';
 import { spellParameters } from './operations/spells/Header';
 import { chatMessagesParameters } from './operations/chat_messages/Header';
+import { cronParameters } from './operations/cron/Header';
 
 export class Habitica implements INodeType {
 	description: INodeTypeDescription = {
@@ -51,6 +52,9 @@ export class Habitica implements INodeType {
 
 			// Chat message parameters
 			...chatMessagesParameters,
+
+			// Cron parameters
+			...cronParameters
 		],
 	};
 

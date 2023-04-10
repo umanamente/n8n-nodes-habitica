@@ -37,6 +37,7 @@ export const habiticaNodeResources = [
 	resourceSpell,
 	//resourceQuest,
 	//resourceInboxMessage,
+	//resourceInventory,
 	resourceChatMessage,
-	//resourceCron,
+	resourceCron,
 ];
