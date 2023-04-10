@@ -1,9 +1,10 @@
 {
   "name": "n8n-nodes-habitica",
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "description": "Habitica node (todo descr)",
   "keywords": [
-    "n8n-community-node-package", "habitica"
+    "n8n-community-node-package",
+    "habitica"
   ],
   "license": "MIT",
   "homepage": "",
@@ -22,7 +23,8 @@
     "format": "prettier nodes credentials --write",
     "lint": "eslint nodes credentials package.json",
     "lintfix": "eslint nodes credentials package.json --fix",
-    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json"
+    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json",
+    "semantic-release": "semantic-release"
   },
   "files": [
     "dist"
@@ -37,6 +39,9 @@
     ]
   },
   "devDependencies": {
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^10.0.3",
+    "@semantic-release/release-notes-generator": "^10.0.3",
     "@types/express": "^4.17.6",
     "@types/request-promise-native": "~1.0.15",
     "@typescript-eslint/parser": "~5.45",
@@ -45,6 +50,7 @@
     "n8n-core": "*",
     "n8n-workflow": "*",
     "prettier": "^2.7.1",
-    "typescript": "~4.8.4"
+    "typescript": "~4.8.4",
+    "semantic-release": "^21.0.1"
   }
 }
