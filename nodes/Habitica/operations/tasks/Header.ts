@@ -1,6 +1,6 @@
 import { INodeProperties } from "n8n-workflow";
 import { getAllTasksOperation, getAllTasksParameters } from "./TaskGetMany";
-import { resourceTask } from "../../definitions/HabiticaNodeResources";
+import { resourceTask } from "../../common/HabiticaNodeResources";
 import { scoreTaskOperation, scoreTaskParameters } from './TaskScore.node';
 import { createUserTaskOperation, createUserTaskParameters } from "./TaskCreateForUser";
 

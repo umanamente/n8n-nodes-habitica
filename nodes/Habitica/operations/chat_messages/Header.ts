@@ -1,6 +1,6 @@
 import { INodeProperties } from "n8n-workflow";
 import { getGroupChatMessagesOperation, getGroupChatMessagesParameters } from "./ChatMessageGetMany";
-import { resourceChatMessage } from "../../definitions/HabiticaNodeResources";
+import { resourceChatMessage } from "../../common/HabiticaNodeResources";
 import { postChatMessageIntoGroupOperation, postChatMessageIntoGroupParameters } from "./ChatMessagePostIntoGroup";
 
 // eslint-disable-next-line n8n-nodes-base/node-param-default-missing

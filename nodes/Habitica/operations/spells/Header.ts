@@ -1,6 +1,6 @@
 import { INodeProperties } from "n8n-workflow";
 import { spellCastOperation, spellCastParameters } from "./SpellCast";
-import { resourceSpell } from "../../definitions/HabiticaNodeResources";
+import { resourceSpell } from "../../common/HabiticaNodeResources";
 
 // eslint-disable-next-line n8n-nodes-base/node-param-default-missing
 const spellOperations : INodeProperties = {

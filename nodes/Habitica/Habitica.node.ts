@@ -1,6 +1,6 @@
 import { IDataObject, ILoadOptionsFunctions, INodeListSearchResult, INodeType, INodeTypeDescription } from 'n8n-workflow';
 import { habiticaApiRequest } from './operations/HabiticaApiRequest';
-import { habiticaNodeResources, resourceTask } from './definitions/HabiticaNodeResources';
+import { habiticaNodeResources, resourceTask } from './common/HabiticaNodeResources';
 import { taskParameters } from './operations/tasks/Header';
 import { spellParameters } from './operations/spells/Header';
 import { chatMessagesParameters } from './operations/chat_messages/Header';
