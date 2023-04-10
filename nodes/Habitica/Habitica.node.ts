@@ -1,10 +1,10 @@
 import { IDataObject, ILoadOptionsFunctions, INodeListSearchResult, INodeType, INodeTypeDescription } from 'n8n-workflow';
-import { habiticaApiRequest } from './common/HabiticaApiRequest';
-import { habiticaNodeResources, resourceTask } from './common/HabiticaNodeResources';
+import { resourceChatMessage, resourceCron, resourceSpell, resourceTask } from './common/HabiticaNodeResources';
 import { taskParameters } from './operations/tasks/Header';
 import { spellParameters } from './operations/spells/Header';
 import { chatMessagesParameters } from './operations/chat_messages/Header';
 import { cronParameters } from './operations/cron/Header';
+import { habiticaApiRequest } from './common/HabiticaApiRequest';
 
 export class Habitica implements INodeType {
 	description: INodeTypeDescription = {
@@ -35,12 +35,21 @@ export class Habitica implements INodeType {
 			},
 		},
 		properties: [
+			// eslint-disable-next-line n8n-nodes-base/node-param-default-missing
 			{
 				displayName: 'Resource',
 				name: 'resource',
 				type: 'options',
 				noDataExpression: true,
-				options: habiticaNodeResources,
+				options: [
+					resourceTask,
+					resourceSpell,
+					//resourceQuest,
+					//resourceInboxMessage,
+					//resourceInventory,
+					resourceChatMessage,
+					resourceCron,
+				],
 				default: resourceTask.value,
 			},
 

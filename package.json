@@ -1,7 +1,7 @@
 {
   "name": "n8n-nodes-habitica",
-  "version": "0.0.0-development",
-  "description": "Habitica node (todo descr)",
+  "version": "0.0.1-development",
+  "description": "Habitica node",
   "keywords": [
     "n8n-community-node-package",
     "habitica"

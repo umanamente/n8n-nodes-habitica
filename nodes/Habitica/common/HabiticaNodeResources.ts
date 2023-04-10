@@ -36,13 +36,3 @@ export const resourceInventory: INodePropertyOptions = {
 	name: 'Inventory',
 	value: 'inventory',
 };
-
-export const habiticaNodeResources = [
-	resourceTask,
-	resourceSpell,
-	//resourceQuest,
-	//resourceInboxMessage,
-	//resourceInventory,
-	resourceChatMessage,
-	resourceCron,
-];
