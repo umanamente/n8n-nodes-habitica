@@ -32,6 +32,11 @@ export const resourceCron: INodePropertyOptions = {
 	value: 'cron',
 };
 
+export const resourceInventory: INodePropertyOptions = {
+	name: 'Inventory',
+	value: 'inventory',
+};
+
 export const habiticaNodeResources = [
 	resourceTask,
 	resourceSpell,

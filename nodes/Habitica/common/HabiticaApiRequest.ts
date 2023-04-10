@@ -1,6 +1,6 @@
 import { IDataObject, IExecuteFunctions, IHookFunctions, ILoadOptionsFunctions, JsonObject, NodeApiError } from "n8n-workflow";
 import { OptionsWithUri } from "request";
-import { habiticaApiBaseUrl } from "../common/HabiticaNodeResources";
+import { habiticaApiBaseUrl } from "./HabiticaNodeResources";
 
 export type Context = IHookFunctions | IExecuteFunctions | ILoadOptionsFunctions;
 
