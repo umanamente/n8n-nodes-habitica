@@ -1,12 +1,9 @@
 import { IDataObject, ILoadOptionsFunctions, INodeListSearchResult, INodeType, INodeTypeDescription } from 'n8n-workflow';
-import { getAllTasksOperation, getAllTasksParameters } from './operations/tasks/TaskGetMany';
-import { scoreTaskOperation, scoreTaskParameters } from './operations/tasks/TaskScore.node';
 import { habiticaApiRequest } from './operations/HabiticaApiRequest';
-import { createUserTaskOperation, createUserTaskParameters } from './operations/tasks/TaskCreateForUser';
-import { spellCastOperation, spellCastParameters } from './operations/spells/SpellCast';
-import { habiticaNodeResources, resourceChatMessage, resourceSpell, resourceTask } from './definitions/HabiticaNodeDefinitions';
-import { getGroupChatMessagesOperation, getGroupChatMessagesParameters } from './operations/chat_messages/ChatMessageGetMany';
-import { postChatMessageIntoGroupOperation, postChatMessageIntoGroupParameters } from './operations/chat_messages/ChatMessagePostIntoGroup';
+import { habiticaNodeResources, resourceTask } from './definitions/HabiticaNodeResources';
+import { taskParameters } from './operations/tasks/Header';
+import { spellParameters } from './operations/spells/Header';
+import { chatMessagesParameters } from './operations/chat_messages/Header';
 
 export class Habitica implements INodeType {
 	description: INodeTypeDescription = {
@@ -45,76 +42,15 @@ export class Habitica implements INodeType {
 				options: habiticaNodeResources,
 				default: resourceTask.value,
 			},
-			// eslint-disable-next-line n8n-nodes-base/node-param-default-missing
-			{
-				displayName: 'Operation',
-				name: 'operation',
-				type: 'options',
-				default: getAllTasksOperation.value,
-				noDataExpression: true,
-				displayOptions: {
-					show: {
-						resource: [
-							resourceTask.value,
-						],
-					},
-				},
-				options: [
-					getAllTasksOperation,
-					scoreTaskOperation,
-					createUserTaskOperation,
-				],
-			},
-			// eslint-disable-next-line n8n-nodes-base/node-param-default-missing
-			{
-				displayName: 'Operation',
-				name: 'operation',
-				type: 'options',
-				default: spellCastOperation.value,
-				noDataExpression: true,
-				displayOptions: {
-					show: {
-						resource: [
-							resourceSpell.value,
-						],
-					},
-				},
-				options: [
-					spellCastOperation
-				],
-			},
-			// eslint-disable-next-line n8n-nodes-base/node-param-default-missing
-			{
-				displayName: 'Operation',
-				name: 'operation',
-				type: 'options',
-				default: getGroupChatMessagesOperation.value,
-				noDataExpression: true,
-				displayOptions: {
-					show: {
-						resource: [
-							resourceChatMessage.value,
-						],
-					},
-				},
-				options: [
-					getGroupChatMessagesOperation,
-					postChatMessageIntoGroupOperation,
-				],
-			},
-
 
 			// Task parameters
-			...getAllTasksParameters,
-			...scoreTaskParameters,
-			...createUserTaskParameters,
+			...taskParameters,
 
 			// Spell parameters
-			...spellCastParameters,
+			...spellParameters,
 
 			// Chat message parameters
-			...getGroupChatMessagesParameters,
-			...postChatMessageIntoGroupParameters,
+			...chatMessagesParameters,
 		],
 	};
 
