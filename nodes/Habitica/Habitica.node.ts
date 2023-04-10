@@ -1,10 +1,11 @@
 import { IDataObject, ILoadOptionsFunctions, INodeListSearchResult, INodeType, INodeTypeDescription } from 'n8n-workflow';
-import { getAllTasksOperation, getAllTasksParameters } from './operations/TaskGetMany';
-import { scoreTaskOperation, scoreTaskParameters } from './operations/TaskScore.node';
+import { getAllTasksOperation, getAllTasksParameters } from './operations/tasks/TaskGetMany';
+import { scoreTaskOperation, scoreTaskParameters } from './operations/tasks/TaskScore.node';
 import { habiticaApiRequest } from './operations/HabiticaApiRequest';
-import { createUserTaskOperation, createUserTaskParameters } from './operations/TaskCreateForUser';
-import { spellCastOperation, spellCastParameters } from './operations/SpellCast';
-import { habiticaNodeResources, resourceTask } from './definitions/HabiticaNodeDefinitions';
+import { createUserTaskOperation, createUserTaskParameters } from './operations/tasks/TaskCreateForUser';
+import { spellCastOperation, spellCastParameters } from './operations/spells/SpellCast';
+import { habiticaNodeResources, resourceChatMessage, resourceSpell, resourceTask } from './definitions/HabiticaNodeDefinitions';
+import { getGroupChatMessagesOperation, getGroupChatMessagesParameters } from './operations/chat_messages/ChatMessageGetMany';
 
 export class Habitica implements INodeType {
 	description: INodeTypeDescription = {
@@ -73,7 +74,7 @@ export class Habitica implements INodeType {
 				displayOptions: {
 					show: {
 						resource: [
-							'spell',
+							resourceSpell.value,
 						],
 					},
 				},
@@ -81,6 +82,25 @@ export class Habitica implements INodeType {
 					spellCastOperation
 				],
 			},
+			// eslint-disable-next-line n8n-nodes-base/node-param-default-missing
+			{
+				displayName: 'Operation',
+				name: 'operation',
+				type: 'options',
+				default: getGroupChatMessagesOperation.value,
+				noDataExpression: true,
+				displayOptions: {
+					show: {
+						resource: [
+							resourceChatMessage.value,
+						],
+					},
+				},
+				options: [
+					getGroupChatMessagesOperation
+				],
+			},
+
 
 			// Task parameters
 			...getAllTasksParameters,
@@ -89,6 +109,9 @@ export class Habitica implements INodeType {
 
 			// Spell parameters
 			...spellCastParameters,
+
+			// Chat message parameters
+			...getGroupChatMessagesParameters,
 		],
 	};
 

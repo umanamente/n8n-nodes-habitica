@@ -1,5 +1,5 @@
 import { INodeProperties, INodePropertyOptions } from "n8n-workflow";
-import { parameterSelectTask } from "../parameters/ParameterSelectTask";
+import { parameterSelectTask } from "../../parameters/ParameterSelectTask";
 
 export const scoreTaskOperation: INodePropertyOptions =
 {

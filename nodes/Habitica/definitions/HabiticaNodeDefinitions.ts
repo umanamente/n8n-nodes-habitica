@@ -22,6 +22,11 @@ export const resourceInboxMessage: INodePropertyOptions = {
 	value: 'inboxMessage',
 };
 
+export const resourceChatMessage: INodePropertyOptions = {
+	name: 'Chat Message',
+	value: 'chatMessage',
+};
+
 export const resourceCron: INodePropertyOptions = {
 	name: 'Cron',
 	value: 'cron',
@@ -30,7 +35,8 @@ export const resourceCron: INodePropertyOptions = {
 export const habiticaNodeResources = [
 	resourceTask,
 	resourceSpell,
-	resourceQuest,
-	resourceInboxMessage,
-	resourceCron,
+	//resourceQuest,
+	//resourceInboxMessage,
+	resourceChatMessage,
+	//resourceCron,
 ];
