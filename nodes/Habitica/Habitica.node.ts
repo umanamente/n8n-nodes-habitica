@@ -6,6 +6,7 @@ import { createUserTaskOperation, createUserTaskParameters } from './operations/
 import { spellCastOperation, spellCastParameters } from './operations/spells/SpellCast';
 import { habiticaNodeResources, resourceChatMessage, resourceSpell, resourceTask } from './definitions/HabiticaNodeDefinitions';
 import { getGroupChatMessagesOperation, getGroupChatMessagesParameters } from './operations/chat_messages/ChatMessageGetMany';
+import { postChatMessageIntoGroupOperation, postChatMessageIntoGroupParameters } from './operations/chat_messages/ChatMessagePostIntoGroup';
 
 export class Habitica implements INodeType {
 	description: INodeTypeDescription = {
@@ -97,7 +98,8 @@ export class Habitica implements INodeType {
 					},
 				},
 				options: [
-					getGroupChatMessagesOperation
+					getGroupChatMessagesOperation,
+					postChatMessageIntoGroupOperation,
 				],
 			},
 
@@ -112,6 +114,7 @@ export class Habitica implements INodeType {
 
 			// Chat message parameters
 			...getGroupChatMessagesParameters,
+			...postChatMessageIntoGroupParameters,
 		],
 	};
 
