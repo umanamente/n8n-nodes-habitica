@@ -1,0 +1,16 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: node:latest
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run prepublishOnly
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
