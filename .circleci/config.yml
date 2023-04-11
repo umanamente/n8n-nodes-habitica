@@ -1,13 +1,5 @@
 version: 2.1
 
-orbs:
-  semantic-release: trustedshops-public/semantic-release@4.0.1
-
-parameters:
-  semantic_release_required:
-    type: boolean
-    default: false
-
 jobs:
   build:
     docker:
@@ -27,7 +19,6 @@ jobs:
     steps:
       - attach_workspace:
           at: "~/project"
-      - semantic-release/create-changelog-config-github
       - run: npm run semantic-release
 
 workflows:
@@ -35,11 +26,7 @@ workflows:
   build:
     jobs:
       - build
-      - hold: # <<< A job that will require manual approval in the CircleCI web application.
-          type: approval # <<< This key-value pair will set your workflow to a status of "On Hold"
-          requires: # We only run the "hold" job when test2 has succeeded
-           - build
       - semantic-release:
           requires:
-            - hold
+            - build
         

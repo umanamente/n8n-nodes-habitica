@@ -1,17 +1,7 @@
-## 1.0.0 (2023-04-11)
+## [1.0.0] (2023-04-11)
 
+First release.
 
-### Features
-
-* Added task activity triggers ([7c18221](https://github.com/umanamente/n8n-nodes-habitica/commit/7c182213bb6b5b552605e971e16559648153cd63))
-* Added user activity triggers ([0b60e34](https://github.com/umanamente/n8n-nodes-habitica/commit/0b60e341f0059155abf896179222084b6a1c2cbb))
-
-
-### Bug Fixes
-
-* Fixed "(o.options || []).filter is not a function" error ([0205340](https://github.com/umanamente/n8n-nodes-habitica/commit/02053406c35e0ce87f3e16380c59cec42ac2f030))
-
-# Changelog
 
 ## [0.2.0] - 2023-04-11
 
