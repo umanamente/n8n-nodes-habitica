@@ -1,4 +1,19 @@
-import { INodeProperties } from "n8n-workflow";
+import { IDataObject, ILoadOptionsFunctions, INodeListSearchResult, INodeProperties } from "n8n-workflow";
+import { habiticaApiRequest } from "../common/HabiticaApiRequest";
+
+
+// searchTasks
+export async function searchTasks(this: ILoadOptionsFunctions): Promise<INodeListSearchResult> {
+	const tasks = await habiticaApiRequest.call(this, 'GET', 'tasks/user');
+	this.logger.debug("Loaded " + tasks.length + " tasks");
+	return {
+		results: tasks.map((task: IDataObject) => ({
+			name: task.text,
+			value: task.id,
+		})),
+	};
+}
+
 
 /**
  * base parameter for selecting a task

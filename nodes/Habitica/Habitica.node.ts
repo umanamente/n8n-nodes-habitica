@@ -1,10 +1,11 @@
-import { IDataObject, ILoadOptionsFunctions, INodeListSearchResult, INodeType, INodeTypeDescription } from 'n8n-workflow';
+import { ILoadOptionsFunctions, INodeListSearchResult, INodeType, INodeTypeDescription } from 'n8n-workflow';
 import { resourceChatMessage, resourceCron, resourceSpell, resourceTask } from './common/HabiticaNodeResources';
 import { taskParameters } from './operations/tasks/Header';
 import { spellParameters } from './operations/spells/Header';
 import { chatMessagesParameters } from './operations/chat_messages/Header';
 import { cronParameters } from './operations/cron/Header';
 import { habiticaApiRequest } from './common/HabiticaApiRequest';
+import { searchTasks } from './parameters/ParameterSelectTask';
 
 export class Habitica implements INodeType {
 	description: INodeTypeDescription = {
@@ -69,16 +70,8 @@ export class Habitica implements INodeType {
 
 	methods = {
 		listSearch: {
-			async searchTasks(this: ILoadOptionsFunctions): Promise<INodeListSearchResult> {
-				const tasks = await habiticaApiRequest.call(this, 'GET', 'tasks/user');
-				this.logger.debug("Loaded " + tasks.length + " tasks");
-				return {
-					results: tasks.map((task: IDataObject) => ({
-						name: task.text,
-						value: task.id,
-					})),
-				};
-			},
+			// searchTasks
+			searchTasks: searchTasks,
 			async searchUserPartyMembers(this: ILoadOptionsFunctions): Promise<INodeListSearchResult> {
 				/*
 				With a limit of 30 member per request (by default).
