@@ -6,6 +6,7 @@ import { chatMessagesParameters } from './operations/chat_messages/Header';
 import { cronParameters } from './operations/cron/Header';
 import { habiticaApiRequest } from './common/HabiticaApiRequest';
 import { searchTasks } from './parameters/ParameterSelectTask';
+import { searchGroups } from './parameters/ParameterSelectGroup';
 
 export class Habitica implements INodeType {
 	description: INodeTypeDescription = {
@@ -72,6 +73,7 @@ export class Habitica implements INodeType {
 		listSearch: {
 			// searchTasks
 			searchTasks: searchTasks,
+			searchGroups: searchGroups,
 			async searchUserPartyMembers(this: ILoadOptionsFunctions): Promise<INodeListSearchResult> {
 				/*
 				With a limit of 30 member per request (by default).

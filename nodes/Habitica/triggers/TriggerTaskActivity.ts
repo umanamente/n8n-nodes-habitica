@@ -1,4 +1,4 @@
-import { IDataObject, INodeProperties, INodePropertyOptions } from "n8n-workflow";
+import { IDataObject, IHookFunctions, INodeProperties, INodePropertyOptions } from "n8n-workflow";
 import { IHabiticaTriggerBase } from "./Common";
 import { parameterSelectTask } from "../parameters/ParameterSelectTask";
 
@@ -21,7 +21,7 @@ export class TriggerTaskActivity implements ITriggerTaskActivity {
 		this.webhookOptionsField = webhookOptionsField;
 	}
 
-	updateBodyParamsForCreateWebhook = (body: IDataObject): void => {
+	updateBodyParamsForCreateWebhook = (body: IDataObject, hookFunctions: IHookFunctions): void => {
 		const defaultOptions = {
 			created: false,
 			updated: false,

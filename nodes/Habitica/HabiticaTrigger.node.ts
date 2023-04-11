@@ -11,9 +11,13 @@ import {
 	NodeOperationError,
 } from 'n8n-workflow';
 import { habiticaApiRequest } from './common/HabiticaApiRequest';
-import { triggerTaskActivityParameters, triggerTaskCreated, triggerTaskDeleted, triggerTaskScored, triggerTaskUpdated } from './triggers/TriggerTaskActivity';
+import { triggerTaskActivityParameters, triggerTaskScored } from './triggers/TriggerTaskActivity';
 import { allEventDefinitions } from './triggers/Common';
 import { searchTasks } from './parameters/ParameterSelectTask';
+import { triggerGroupChatMessageReceivedParameters } from './triggers/TriggerGroupChat';
+import { searchGroups } from './parameters/ParameterSelectGroup';
+import { triggerQuestActivityParameters } from './triggers/TriggerQuestActivity';
+import { triggerUserActivityParameters } from './triggers/TriggerUserActivity';
 
 
 export class HabiticaTrigger implements INodeType {
@@ -53,22 +57,20 @@ export class HabiticaTrigger implements INodeType {
 				required: true,
 				default: triggerTaskScored.triggerDefinition.value,
 				options: [
-					triggerTaskScored.triggerDefinition,
-					triggerTaskCreated.triggerDefinition,
-					triggerTaskUpdated.triggerDefinition,
-					triggerTaskDeleted.triggerDefinition,
+					...Object.values(allEventDefinitions).map(eventDefinition => eventDefinition.triggerDefinition),
 				],
 			},
 			...triggerTaskActivityParameters,
+			...triggerGroupChatMessageReceivedParameters,
+			...triggerQuestActivityParameters,
+			...triggerUserActivityParameters
 		],
-
-
 	};
 
 	methods = {
 		listSearch: {
-			// searchTasks
 			searchTasks: searchTasks,
+			searchGroups: searchGroups,
 		},
 	}
 
@@ -109,7 +111,7 @@ export class HabiticaTrigger implements INodeType {
 				};
 
 				if (eventDefinition.updateBodyParamsForCreateWebhook) {
-					eventDefinition.updateBodyParamsForCreateWebhook(body);
+					eventDefinition.updateBodyParamsForCreateWebhook(body, this);
 				}
 
 				this.logger.debug('create webhook body: ' + JSON.stringify(body));
@@ -155,7 +157,6 @@ export class HabiticaTrigger implements INodeType {
 			this.logger.debug('allowAllTasks: ' + allowAllTasks);
 			if (!allowAllTasks) {
 				// check if the task id is in the list of allowed tasks
-				// todo
 				const requiredTaskId = this.getNodeParameter('taskId', "<unknown>", {extractValue: true}) as string;
 				this.logger.debug('requiredTaskId: ' + requiredTaskId);
 

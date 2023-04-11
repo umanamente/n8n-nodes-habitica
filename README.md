@@ -17,6 +17,32 @@ Earn points, unlock gear, and find motivation to keep going.
 
 Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
 
+## Supported Triggers
+
+### User activity
+
+* Pet hatched
+* Pet fed
+* Level up
+
+### Quest activity
+
+* Invited to quest
+* Quest started
+* Quest finished
+
+### Group chat activity
+
+* New chat message
+
+### Task activity
+
+* Task created
+* Task updated
+* Task deleted
+* Task scored
+
+
 ## Supported Operations
 
 ### Tasks
