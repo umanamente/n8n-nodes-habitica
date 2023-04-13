@@ -1,4 +1,5 @@
 import { INodeProperties, INodePropertyOptions } from "n8n-workflow";
+import { resourceTask } from "../ResourceName";
 
 export const createUserTaskOperation: INodePropertyOptions =
 {
@@ -35,7 +36,7 @@ export const createUserTaskParameters: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'task',
+					resourceTask.value,
 				],
 				operation: [
 					createUserTaskOperation.value,
@@ -76,7 +77,7 @@ export const createUserTaskParameters: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'task',
+					resourceTask.value,
 				],
 				operation: [
 					createUserTaskOperation.value,

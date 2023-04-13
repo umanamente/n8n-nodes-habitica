@@ -1,5 +1,6 @@
 import { INodeProperties, INodePropertyOptions } from "n8n-workflow";
 import { parameterSelectTask } from "../../../parameters/ParameterSelectTask";
+import { resourceTask } from "../ResourceName";
 
 export const scoreTaskOperation: INodePropertyOptions =
 {
@@ -34,7 +35,7 @@ export const scoreTaskParameters: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'task',
+					resourceTask.value,
 				],
 				operation: [
 					scoreTaskOperation.value,
@@ -52,7 +53,7 @@ export const scoreTaskParameters: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'task',
+					resourceTask.value,
 				],
 				operation: [
 					scoreTaskOperation.value,

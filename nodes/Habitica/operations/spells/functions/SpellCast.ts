@@ -1,6 +1,7 @@
 import { INodeProperties, INodePropertyOptions } from 'n8n-workflow';
 import { parameterSelectTask } from "../../../parameters/ParameterSelectTask";
 import { parameterSelectUserPartyMember } from '../../../parameters/ParameterSelectPartyMember';
+import { resourceSpell } from '../ResourceName';
 
 // enum with spell classes: Mage, Warrior, Rogue, Healer, Transformation Items
 export enum SpellClass {
@@ -247,10 +248,10 @@ export const spellCastParameters: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'spell',
+					resourceSpell.value,
 				],
 				operation: [
-					'spellCast',
+					spellCastOperation.value,
 				],
 			},
 		},
@@ -268,11 +269,11 @@ export const spellCastParameters: INodeProperties[] = [
 		// only display for spells that require a task target
 		displayOptions: {
 			show: {
-				operation: [
-					'spellCast',
-				],
 				resource: [
-					'spell',
+					resourceSpell.value,
+				],
+				operation: [
+					 spellCastOperation.value,
 				],
 				spellId: spellDefinitions.filter(
 					spellDefinition => spellDefinition.targetType === TargetType.Task
@@ -293,11 +294,11 @@ export const spellCastParameters: INodeProperties[] = [
 		// only display for spells that require a party member target
 		displayOptions: {
 			show: {
-				operation: [
-					'spellCast',
-				],
 				resource: [
-					'spell',
+					resourceSpell.value,
+				],
+				operation: [
+					spellCastOperation.value,
 				],
 				spellId: spellDefinitions.filter(
 					spellDefinition => spellDefinition.targetType === TargetType.PartyMember
