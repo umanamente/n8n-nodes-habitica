@@ -4,6 +4,7 @@ import { postChatMessageIntoGroupOperation, postChatMessageIntoGroupParameters }
 import { IResourceDef } from "../common/CommonDefinitions";
 import { markAllAsReadOperation, markAllAsReadParameters } from "./functions/ChatMessageMarkAllAsRead";
 import { likeMessageOperation, likeMessageParameters } from "./functions/ChatMessageLike";
+import { reportMessageOperation, reportMessageParameters } from "./functions/ChatMessageReport";
 
 export const chatMessagesResourceDefinitions: IResourceDef = {
 	resource: resourceChatMessage,
@@ -24,6 +25,10 @@ export const chatMessagesResourceDefinitions: IResourceDef = {
 			operation: likeMessageOperation,
 			parameters: likeMessageParameters,
 		},
+		{
+			operation: reportMessageOperation,
+			parameters: reportMessageParameters,
+		}
 	],
 };
 
