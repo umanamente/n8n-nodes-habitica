@@ -4,6 +4,7 @@ import { chatMessagesResourceDefinitions } from "./chat_messages/Header";
 import { spellsResourceDefinitions } from "./spells/Header";
 import { cronResourceDefinitions } from "./cron/Header";
 import { userResourceDefinitions } from "./user/Header";
+import { questResourceDefinitions } from "./quest/Header";
 
 export const allResourceDefinitions: IResourceDef[] = [
 	taskResourceDefinitions,
@@ -11,4 +12,5 @@ export const allResourceDefinitions: IResourceDef[] = [
 	spellsResourceDefinitions,
 	cronResourceDefinitions,
 	userResourceDefinitions,
+	questResourceDefinitions,
 ];
