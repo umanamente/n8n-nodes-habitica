@@ -1,5 +1,6 @@
 import { INodeProperties, INodePropertyOptions } from "n8n-workflow";
 import { resourceChatMessage } from "../ResourceName";
+import { parameterSelectGroup } from "../../../parameters/ParameterSelectGroup";
 
 export const postChatMessageIntoGroupOperation: INodePropertyOptions =
 {
@@ -26,34 +27,15 @@ export const postChatMessageIntoGroupOperation: INodePropertyOptions =
 };
 
 export const postChatMessageIntoGroupParameters : INodeProperties[] = [
-	// group id selector
+	// select group
 	{
-		displayName: 'Group',
-		name: 'groupId',
-		type: 'options',
-		required: true,
-		default: 'party',
-		description: 'The group to get chat messages from',
-		// 'party' for the user party and 'habitrpg' for tavern are accepted
-		options: [
-			{
-				name: 'User Party',
-				value: 'party',
-			},
-			{
-				name: 'Tavern',
-				value: 'habitrpg',
-			},
-		],
+		...parameterSelectGroup,
 		displayOptions: {
 			show: {
-				resource: [
-					resourceChatMessage.value,
-				],
 				operation: [
 					postChatMessageIntoGroupOperation.value,
-				]
-			}
+				],
+			},
 		},
 	},
 	// message text
