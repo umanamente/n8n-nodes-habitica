@@ -13,6 +13,10 @@ Earn points, unlock gear, and find motivation to keep going.
 [Usage](#usage)  
 [Version history](CHANGELOG.md)
 
+## Contributing
+
+Please read the [contributing guidelines](CONTRIBUTING.md).
+
 ## Installation
 
 Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
@@ -55,10 +59,19 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 
 * Cast a skill
 
+### User
+
+* Get user profile info
+* Get items available for purchase
+
 ### Chat messages
 
 * Send a chat message
 * Get all chat messages
+* Mark all chat messages as read
+* Like a chat message
+* Report a chat message
+* Delete a chat message
 
 ### Cron
 
