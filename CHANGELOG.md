@@ -1,3 +1,14 @@
+## [1.2.0](https://github.com/umanamente/n8n-nodes-habitica/compare/v1.1.0...v1.2.0) (2023-04-13)
+
+
+### Features
+
+* Added "Delete a chat message" operation ([22ed962](https://github.com/umanamente/n8n-nodes-habitica/commit/22ed96290ae946d3932d8b52f3fefddd0b983eb4))
+* Added "Like Message" operation ([fc786ff](https://github.com/umanamente/n8n-nodes-habitica/commit/fc786ffe933ba18240a5bd79631298868f3751f8))
+* Added "List Items Available for Purchase" operation ([6d0a602](https://github.com/umanamente/n8n-nodes-habitica/commit/6d0a6020f6ee389c742e8e556419365e13fd922f))
+* Added "Mark all chat messages as read" operation ([3d30928](https://github.com/umanamente/n8n-nodes-habitica/commit/3d3092840580fc45756d9761ca28f51e747056c2))
+* Added "Report Message" operation ([ca5ca17](https://github.com/umanamente/n8n-nodes-habitica/commit/ca5ca17239335833f2dc337939530ee925ab4a5a))
+
 ## [1.1.0](https://github.com/umanamente/n8n-nodes-habitica/compare/v1.0.0...v1.1.0) (2023-04-13)
 
 
