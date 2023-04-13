@@ -4,6 +4,7 @@ import {
 	ICredentialType,
 	INodeProperties,
 } from 'n8n-workflow';
+import { habiticaApiBaseUrl } from '../nodes/Habitica/common/HabiticaApiRequest';
 
 export const AUTHOR_ID = 'a1abf9df-d89d-4f5e-9e80-26dc3c481042';
 
@@ -52,7 +53,7 @@ export class HabiticaApi implements ICredentialType {
 	};
   test: ICredentialTestRequest = {
     request: {
-      baseURL: 'https://habitica.com/api/v3/',
+      baseURL: habiticaApiBaseUrl,
       url: 'tags',
     },
   };

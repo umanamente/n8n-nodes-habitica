@@ -1,5 +1,5 @@
 import { ILoadOptionsFunctions, INodeListSearchResult, INodeType, INodeTypeDescription } from 'n8n-workflow';
-import { habiticaApiRequest } from './common/HabiticaApiRequest';
+import { habiticaApiBaseUrl, habiticaApiRequest } from './common/HabiticaApiRequest';
 import { searchTasks } from './parameters/ParameterSelectTask';
 import { searchGroups } from './parameters/ParameterSelectGroup';
 import { allResourceDefinitions } from './operations/OperationsHeader';
@@ -27,7 +27,7 @@ export class Habitica implements INodeType {
 		],
 
 		requestDefaults: {
-			baseURL: 'https://habitica.com/api/v3/',
+			baseURL: habiticaApiBaseUrl,
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
