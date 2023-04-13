@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/umanamente/n8n-nodes-habitica/compare/v1.0.0...v1.1.0) (2023-04-13)
+
+
+### Features
+
+* added "Get User Profile Info" operation ([3cf8b77](https://github.com/umanamente/n8n-nodes-habitica/commit/3cf8b77ec935d40ce47c1759df8b16420482706f))
+
 ## [1.0.0] (2023-04-11)
 
 First release.
