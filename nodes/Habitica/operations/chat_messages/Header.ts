@@ -1,33 +1,20 @@
-import { INodeProperties } from "n8n-workflow";
-import { getGroupChatMessagesOperation, getGroupChatMessagesParameters } from "./ChatMessageGetMany";
-import { resourceChatMessage } from "../../common/HabiticaNodeResources";
-import { postChatMessageIntoGroupOperation, postChatMessageIntoGroupParameters } from "./ChatMessagePostIntoGroup";
+import { getGroupChatMessagesOperation, getGroupChatMessagesParameters } from "./functions/ChatMessageGetMany";
+import { resourceChatMessage } from "./ResourceName";
+import { postChatMessageIntoGroupOperation, postChatMessageIntoGroupParameters } from "./functions/ChatMessagePostIntoGroup";
+import { IResourceDef } from "../common/CommonDefinitions";
 
-// eslint-disable-next-line n8n-nodes-base/node-param-default-missing
-const chatMessagesOperations : INodeProperties = {
-	displayName: 'Operation',
-	name: 'operation',
-	type: 'options',
-	default: getGroupChatMessagesOperation.value,
-	noDataExpression: true,
-	displayOptions: {
-		show: {
-			resource: [
-				resourceChatMessage.value,
-			],
+export const chatMessagesResourceDefinitions: IResourceDef = {
+	resource: resourceChatMessage,
+	operationDefs: [
+		{
+			operation: getGroupChatMessagesOperation,
+			parameters: getGroupChatMessagesParameters,
 		},
-	},
-	options: [
-		getGroupChatMessagesOperation,
-		postChatMessageIntoGroupOperation,
+		{
+			operation: postChatMessageIntoGroupOperation,
+			parameters: postChatMessageIntoGroupParameters,
+		},
 	],
 };
 
-export const chatMessagesParameters: INodeProperties[] = [
-	// operation
-	chatMessagesOperations,
 
-	// related parameters
-	...getGroupChatMessagesParameters,
-	...postChatMessageIntoGroupParameters,
-];

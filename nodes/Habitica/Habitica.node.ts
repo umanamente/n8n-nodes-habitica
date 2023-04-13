@@ -1,12 +1,9 @@
 import { ILoadOptionsFunctions, INodeListSearchResult, INodeType, INodeTypeDescription } from 'n8n-workflow';
-import { resourceChatMessage, resourceCron, resourceSpell, resourceTask } from './common/HabiticaNodeResources';
-import { taskParameters } from './operations/tasks/Header';
-import { spellParameters } from './operations/spells/Header';
-import { chatMessagesParameters } from './operations/chat_messages/Header';
-import { cronParameters } from './operations/cron/Header';
 import { habiticaApiRequest } from './common/HabiticaApiRequest';
 import { searchTasks } from './parameters/ParameterSelectTask';
 import { searchGroups } from './parameters/ParameterSelectGroup';
+import { allResourceDefinitions } from './operations/OperationsHeader';
+import { getAllResourceNodeParameters } from './operations/common/CommonDefinitions';
 
 export class Habitica implements INodeType {
 	description: INodeTypeDescription = {
@@ -43,29 +40,12 @@ export class Habitica implements INodeType {
 				name: 'resource',
 				type: 'options',
 				noDataExpression: true,
-				options: [
-					resourceTask,
-					resourceSpell,
-					//resourceQuest,
-					//resourceInboxMessage,
-					//resourceInventory,
-					resourceChatMessage,
-					resourceCron,
-				],
-				default: resourceTask.value,
+				options: allResourceDefinitions.map((resourceDef) => resourceDef.resource),
+				default: allResourceDefinitions[0].resource.value,
 			},
 
-			// Task parameters
-			...taskParameters,
-
-			// Spell parameters
-			...spellParameters,
-
-			// Chat message parameters
-			...chatMessagesParameters,
-
-			// Cron parameters
-			...cronParameters
+			// combine all parameters from all operations
+			...allResourceDefinitions.map((resourceDef) => getAllResourceNodeParameters(resourceDef)).flat(),
 		],
 	};
 

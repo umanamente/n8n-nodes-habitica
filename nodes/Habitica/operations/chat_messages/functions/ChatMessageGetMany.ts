@@ -1,5 +1,6 @@
 import { INodeProperties, INodePropertyOptions } from "n8n-workflow";
-import { resourceChatMessage } from "../../common/HabiticaNodeResources";
+import { resourceChatMessage } from "../ResourceName";
+
 
 export const getGroupChatMessagesOperation: INodePropertyOptions =
 {

@@ -1,30 +1,14 @@
-import { INodeProperties } from "n8n-workflow";
-import { spellCastOperation, spellCastParameters } from "./SpellCast";
-import { resourceSpell } from "../../common/HabiticaNodeResources";
+import { spellCastOperation, spellCastParameters } from "./functions/SpellCast";
+import { resourceSpell } from "./ResourceName";
+import { IResourceDef } from "../common/CommonDefinitions";
 
-// eslint-disable-next-line n8n-nodes-base/node-param-default-missing
-const spellOperations : INodeProperties = {
-	displayName: 'Operation',
-	name: 'operation',
-	type: 'options',
-	default: spellCastOperation.value,
-	noDataExpression: true,
-	displayOptions: {
-		show: {
-			resource: [
-				resourceSpell.value,
-			],
+export const spellsResourceDefinitions: IResourceDef = {
+	resource: resourceSpell,
+	operationDefs: [
+		{
+			operation: spellCastOperation,
+			parameters: spellCastParameters,
 		},
-	},
-	options: [
-		spellCastOperation
 	],
 };
 
-export const spellParameters: INodeProperties[] = [
-	// operation
-	spellOperations,
-
-	// related parameters
-	...spellCastParameters,
-];

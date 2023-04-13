@@ -1,36 +1,23 @@
-import { INodeProperties } from "n8n-workflow";
-import { getAllTasksOperation, getAllTasksParameters } from "./TaskGetMany";
-import { resourceTask } from "../../common/HabiticaNodeResources";
-import { scoreTaskOperation, scoreTaskParameters } from './TaskScore.node';
-import { createUserTaskOperation, createUserTaskParameters } from "./TaskCreateForUser";
+import { createUserTaskOperation, createUserTaskParameters } from "./functions/TaskCreateForUser";
+import { resourceTask } from "./ResourceName";
+import { getAllTasksOperation, getAllTasksParameters } from "./functions/TaskGetMany";
+import { scoreTaskOperation, scoreTaskParameters } from "./functions/TaskScore.node";
+import { IResourceDef } from "../common/CommonDefinitions";
 
-// eslint-disable-next-line n8n-nodes-base/node-param-default-missing
-const taskOperations : INodeProperties = {
-	displayName: 'Operation',
-	name: 'operation',
-	type: 'options',
-	default: getAllTasksOperation.value,
-	noDataExpression: true,
-	displayOptions: {
-		show: {
-			resource: [
-				resourceTask.value,
-			],
+export const taskResourceDefinitions: IResourceDef = {
+	resource: resourceTask,
+	operationDefs: [
+		{
+			operation: getAllTasksOperation,
+			parameters: getAllTasksParameters,
 		},
-	},
-	options: [
-		getAllTasksOperation,
-		scoreTaskOperation,
-		createUserTaskOperation,
+		{
+			operation: scoreTaskOperation,
+			parameters: scoreTaskParameters,
+		},
+		{
+			operation: createUserTaskOperation,
+			parameters: createUserTaskParameters,
+		},
 	],
 };
-
-export const taskParameters: INodeProperties[] = [
-	// operation
-	taskOperations,
-
-	// related parameters
-	...getAllTasksParameters,
-	...scoreTaskParameters,
-	...createUserTaskParameters,
-];

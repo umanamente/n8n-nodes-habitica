@@ -1,6 +1,6 @@
 import { INodeProperties, INodePropertyOptions } from 'n8n-workflow';
-import { parameterSelectTask } from "../../parameters/ParameterSelectTask";
-import { parameterSelectUserPartyMember } from '../../parameters/ParameterSelectPartyMember';
+import { parameterSelectTask } from "../../../parameters/ParameterSelectTask";
+import { parameterSelectUserPartyMember } from '../../../parameters/ParameterSelectPartyMember';
 
 // enum with spell classes: Mage, Warrior, Rogue, Healer, Transformation Items
 export enum SpellClass {
