@@ -1,8 +1,6 @@
 {
   "branches": [
-    "master",
-    "main",
-		"circleci_semantic_release_setup"
+    "master"
   ],
   "plugins": [
     [
