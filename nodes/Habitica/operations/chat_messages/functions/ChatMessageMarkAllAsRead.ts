@@ -1,5 +1,6 @@
 import { INodeProperties, INodePropertyOptions } from "n8n-workflow";
 import { parameterSelectGroup } from "../../../parameters/ParameterSelectGroup";
+import { resourceChatMessage } from "../ResourceName";
 
 export const markAllAsReadOperation: INodePropertyOptions =
 {
@@ -31,6 +32,9 @@ export const markAllAsReadParameters : INodeProperties[] = [
 		...parameterSelectGroup,
 		displayOptions: {
 			show: {
+				resource: [
+					resourceChatMessage.value,
+				],
 				operation: [
 					markAllAsReadOperation.value,
 				],

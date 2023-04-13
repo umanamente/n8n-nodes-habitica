@@ -1,5 +1,6 @@
 import { INodeProperties, INodePropertyOptions } from "n8n-workflow";
 import { parameterSelectGroup } from "../../../parameters/ParameterSelectGroup";
+import { resourceChatMessage } from "../ResourceName";
 
 export const reportMessageOperation: INodePropertyOptions =
 {
@@ -31,6 +32,9 @@ export const reportMessageParameters : INodeProperties[] = [
 		...parameterSelectGroup,
 		displayOptions: {
 			show: {
+				resource: [
+					resourceChatMessage.value,
+				],
 				operation: [
 					reportMessageOperation.value,
 				],
@@ -48,6 +52,9 @@ export const reportMessageParameters : INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
+				resource: [
+					resourceChatMessage.value,
+				],
 				operation: [
 					reportMessageOperation.value,
 				],

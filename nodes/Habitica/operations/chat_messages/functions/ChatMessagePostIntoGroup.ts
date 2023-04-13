@@ -32,6 +32,9 @@ export const postChatMessageIntoGroupParameters : INodeProperties[] = [
 		...parameterSelectGroup,
 		displayOptions: {
 			show: {
+				resource: [
+					resourceChatMessage.value,
+				],
 				operation: [
 					postChatMessageIntoGroupOperation.value,
 				],
