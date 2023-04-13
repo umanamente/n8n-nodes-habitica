@@ -3,6 +3,7 @@ import { resourceChatMessage } from "./ResourceName";
 import { postChatMessageIntoGroupOperation, postChatMessageIntoGroupParameters } from "./functions/ChatMessagePostIntoGroup";
 import { IResourceDef } from "../common/CommonDefinitions";
 import { markAllAsReadOperation, markAllAsReadParameters } from "./functions/ChatMessageMarkAllAsRead";
+import { likeMessageOperation, likeMessageParameters } from "./functions/ChatMessageLike";
 
 export const chatMessagesResourceDefinitions: IResourceDef = {
 	resource: resourceChatMessage,
@@ -18,7 +19,11 @@ export const chatMessagesResourceDefinitions: IResourceDef = {
 		{
 			operation: markAllAsReadOperation,
 			parameters: markAllAsReadParameters,
-		}
+		},
+		{
+			operation: likeMessageOperation,
+			parameters: likeMessageParameters,
+		},
 	],
 };
 

@@ -1,5 +1,7 @@
 import { IDataObject, ILoadOptionsFunctions, INodeListSearchResult, INodeProperties } from "n8n-workflow";
 import { habiticaApiRequest } from "../common/HabiticaApiRequest";
+import { validationGuidRegex } from "./Common";
+import { AUTHOR_ID } from "../../../credentials/HabiticaApi.credentials";
 
 
 // searchTasks
@@ -42,15 +44,9 @@ export const parameterSelectTask: INodeProperties	= {
 			type: 'string',
 			hint: 'Enter a task ID',
 			validation: [
-				{
-					type: 'regex',
-					properties: {
-						regex: "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
-						errorMessage: 'The ID must look like this: "884046fa-bc7f-43e2-b1df-b202dc419dcf"',
-					},
-				},
+				validationGuidRegex,
 			],
-			placeholder: '884046fa-bc7f-43e2-b1df-b202dc419dcf',
+			placeholder: AUTHOR_ID,
 		},
 	],
 };

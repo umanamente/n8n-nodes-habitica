@@ -5,6 +5,8 @@ import {
 	INodeProperties,
 } from 'n8n-workflow';
 
+export const AUTHOR_ID = 'a1abf9df-d89d-4f5e-9e80-26dc3c481042';
+
 export class HabiticaApi implements ICredentialType {
 	name = 'habiticaApi';
 	displayName = 'Habitica API';
@@ -27,7 +29,7 @@ export class HabiticaApi implements ICredentialType {
 		{
 			displayName: 'Author ID',
 			name: 'authorId',
-			default: 'a1abf9df-d89d-4f5e-9e80-26dc3c481042',
+			default: AUTHOR_ID,
 			type: 'hidden',
 		},
 		// hidden SCRIPT_NAME property
