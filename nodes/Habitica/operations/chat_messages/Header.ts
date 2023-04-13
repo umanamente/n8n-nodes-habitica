@@ -5,6 +5,7 @@ import { IResourceDef } from "../common/CommonDefinitions";
 import { markAllAsReadOperation, markAllAsReadParameters } from "./functions/ChatMessageMarkAllAsRead";
 import { likeMessageOperation, likeMessageParameters } from "./functions/ChatMessageLike";
 import { reportMessageOperation, reportMessageParameters } from "./functions/ChatMessageReport";
+import { deleteMessageOperation, deleteMessageParameters } from "./functions/ChatMessageDelete";
 
 export const chatMessagesResourceDefinitions: IResourceDef = {
 	resource: resourceChatMessage,
@@ -28,6 +29,10 @@ export const chatMessagesResourceDefinitions: IResourceDef = {
 		{
 			operation: reportMessageOperation,
 			parameters: reportMessageParameters,
+		},
+		{
+			operation: deleteMessageOperation,
+			parameters: deleteMessageParameters,
 		}
 	],
 };
