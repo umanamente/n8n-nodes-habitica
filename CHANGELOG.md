@@ -1,3 +1,25 @@
+## [1.3.0](https://github.com/umanamente/n8n-nodes-habitica/compare/v1.2.0...v1.3.0) (2023-04-17)
+
+
+### Features
+
+* Added "Accept Quest" operation ([914b227](https://github.com/umanamente/n8n-nodes-habitica/commit/914b227133108e86a5a2976f9579054166d04569))
+* Added "Add Checklist Item" operation ([10bb484](https://github.com/umanamente/n8n-nodes-habitica/commit/10bb484369333f3948f192b19cd70f29170d842e))
+* Added "Buy a Health Potion" operation ([c93bafe](https://github.com/umanamente/n8n-nodes-habitica/commit/c93bafe5d68ef65de31213973232dc8bccc8cad0))
+* Added "Get all content objects" operation ([c7356ff](https://github.com/umanamente/n8n-nodes-habitica/commit/c7356ff55c0182f1c20eea0275f4082cd53ea2c1))
+* Added "Get Game World State" operation ([8cea450](https://github.com/umanamente/n8n-nodes-habitica/commit/8cea450dd507504005aa6b91db0d15223f6435e5))
+* Added "Get Inbox Messages" operation ([7b0937a](https://github.com/umanamente/n8n-nodes-habitica/commit/7b0937ae7771ee59a1b8d656d46ca49e929c949e))
+* Added "Get many groups" operation ([7f5ec04](https://github.com/umanamente/n8n-nodes-habitica/commit/7f5ec042a82efb0d4ece2b56be885990068959fa))
+* Added "Get members of a group" operation ([ab5828e](https://github.com/umanamente/n8n-nodes-habitica/commit/ab5828e9a922260bac01ea42c46c87ad25fb3fb5))
+* Added "Score Checklist Item" operation ([b2d54e9](https://github.com/umanamente/n8n-nodes-habitica/commit/b2d54e9f80a37f0c9dd924ac95a34c9c1b733d2a))
+* Added "Send private message" operation ([670d2c4](https://github.com/umanamente/n8n-nodes-habitica/commit/670d2c49a59c3575e455cbac77823fe43193437c))
+* Added optional fields for "Create Task" operation ([7092f25](https://github.com/umanamente/n8n-nodes-habitica/commit/7092f2533e2cca25c1761f63161f03f0132e2b73))
+
+
+### Bug Fixes
+
+* Sometimes chat message parameters could be shown for a different resource ([8b60166](https://github.com/umanamente/n8n-nodes-habitica/commit/8b601669ea12229371cb791e89380e8bcc4c3a28))
+
 ## [1.2.0](https://github.com/umanamente/n8n-nodes-habitica/compare/v1.1.0...v1.2.0) (2023-04-13)
 
 
