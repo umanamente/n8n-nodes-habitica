@@ -32,6 +32,16 @@ export const getInboxMessagesParameters : INodeProperties[] = [
 		type: 'boolean',
 		default: false,
 		description: "Whether to load all messages or use pagination",
+		displayOptions: {
+			show: {
+				resource: [
+					resourceInbox.value,
+				],
+				operation: [
+					getInboxMessagesOperation.value,
+				],
+			},
+		},
 	},
 	// Load the messages of the selected Page - 10 Messages per Page
 	{

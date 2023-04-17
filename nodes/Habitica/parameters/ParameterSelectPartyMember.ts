@@ -27,7 +27,7 @@ export const parameterSelectUserPartyMember: INodeProperties	= {
 			displayName: 'ID',
 			name: 'id',
 			type: 'string',
-			hint: 'Enter a party member ID',
+			hint: 'Enter a user ID',
 			validation: [
 				validationGuidRegex,
 			],
