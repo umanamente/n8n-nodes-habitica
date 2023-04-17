@@ -7,7 +7,9 @@ Earn points, unlock gear, and find motivation to keep going.
 
 ## Table of Contents
 
-[Installation](#installation)  
+[Contributing](#contributing)
+[Installation](#installation) 
+[Supported Triggers](#supported-triggers) 
 [Supported Operations](#supported-operations)  
 [Credentials](#credentials)  
 [Usage](#usage)  
@@ -54,6 +56,8 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 * Add a task
 * Get all tasks
 * Score a task
+* Create a checklist item
+* Score a checklist item
 
 ### Skills (Spells)
 
@@ -63,6 +67,7 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 
 * Get user profile info
 * Get items available for purchase
+* Buy a Health Potion
 
 ### Chat messages
 
@@ -72,6 +77,26 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 * Like a chat message
 * Report a chat message
 * Delete a chat message
+
+### Inbox
+
+* Get all inbox messages
+* Send a private message
+
+### Quests
+
+* Accept a quest
+
+### Groups
+
+* Get all groups
+* Get members of a group
+
+
+### Content
+
+* Get all content
+* Get game world state
 
 ### Cron
 
