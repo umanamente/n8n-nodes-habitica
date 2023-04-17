@@ -1,5 +1,6 @@
 import { IResourceDef } from "../common/CommonDefinitions";
 import { resourceUser } from "./ResourceName";
+import { buyHealthPotionsOperation, buyHealthPotionsParameters } from "./functions/UserBuyHealthPotion";
 import { getUserProfileInfoOperation, getUserProfileInfoParameters } from "./functions/UserGetProfileInfo";
 import { getUserShopItemsOperation, getUserShopItemsParameters } from "./functions/UserGetShopItems";
 
@@ -13,6 +14,10 @@ export const userResourceDefinitions: IResourceDef = {
 		{
 			operation: getUserShopItemsOperation,
 			parameters: getUserShopItemsParameters,
-		}
+		},
+		{
+			operation: buyHealthPotionsOperation,
+			parameters: buyHealthPotionsParameters,
+		},
 	],
 };
