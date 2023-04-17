@@ -1,5 +1,6 @@
 import { IResourceDef } from "../common/CommonDefinitions";
 import { resourceGroup } from "./ResourceName";
+import { getManyGroupsOperation, getManyGroupsParameters } from "./functions/GroupGetMany";
 import { getGroupMembersOperation, getGroupMembersParameters } from "./functions/GroupGetMembers";
 
 export const groupResourceDefinitions: IResourceDef = {
@@ -9,6 +10,10 @@ export const groupResourceDefinitions: IResourceDef = {
 			operation: getGroupMembersOperation,
 			parameters: getGroupMembersParameters,
 		},
+		{
+			operation: getManyGroupsOperation,
+			parameters: getManyGroupsParameters,
+		}
 	],
 };
 
