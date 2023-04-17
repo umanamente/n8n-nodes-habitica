@@ -1,4 +1,4 @@
-import { IExecuteSingleFunctions, IHttpRequestOptions, INodeProperties, INodePropertyOptions } from "n8n-workflow";
+import { INodeProperties, INodePropertyOptions } from "n8n-workflow";
 import { resourceGroup } from "../ResourceName";
 
 export const getManyGroupsOperation: INodePropertyOptions =
@@ -58,18 +58,9 @@ export const getManyGroupsParameters : INodeProperties[] = [
 		],
 		routing: {
 			send: {
-				preSend: [
-					async function combineIntoCommaSeparatedString(
-						this: IExecuteSingleFunctions,
-						requestOptions: IHttpRequestOptions,
-					): Promise<IHttpRequestOptions> {
-						const categoriesArray = this.getNodeParameter('groupTypes', []) as string[];
-						const commaSeparatedCategories = categoriesArray.join(',');
-						requestOptions.qs = requestOptions.qs || {}; // init query object if it doesn't exist
-						requestOptions.qs.type = commaSeparatedCategories;
-						return requestOptions;
-					}
-				],
+				property: 'type',
+				type: 'query',
+				value: "={{ $parameter['groupTypes'].join(',') }}",
 			},
 		},
 		displayOptions: {

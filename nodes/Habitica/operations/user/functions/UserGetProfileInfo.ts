@@ -1,4 +1,4 @@
-import { IExecuteSingleFunctions, IHttpRequestOptions, INodeProperties, INodePropertyOptions } from "n8n-workflow";
+import { INodeProperties, INodePropertyOptions } from "n8n-workflow";
 import { resourceUser } from "../ResourceName";
 
 export const getUserProfileInfoOperation: INodePropertyOptions =
@@ -86,18 +86,9 @@ export const getUserProfileInfoParameters: INodeProperties[] = [
 		}),
 		routing: {
 			send: {
-				preSend: [
-					async function combineIntoCommaSeparatedString(
-						this: IExecuteSingleFunctions,
-						requestOptions: IHttpRequestOptions,
-					): Promise<IHttpRequestOptions> {
-						const categoriesArray = this.getNodeParameter('selectCategories', []) as string[];
-						const commaSeparatedCategories = categoriesArray.join(',');
-						requestOptions.qs = requestOptions.qs || {}; // init query object if it doesn't exist
-						requestOptions.qs.userFields = commaSeparatedCategories;
-						return requestOptions;
-					}
-				],
+				type: 'query',
+				property: 'userFields',
+				value: "={{ $parameter['selectCategories'].join(',') }}",
 			},
 		},
 		displayOptions: {
