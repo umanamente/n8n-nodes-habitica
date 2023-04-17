@@ -7,12 +7,11 @@ Earn points, unlock gear, and find motivation to keep going.
 
 ## Table of Contents
 
-[Contributing](#contributing)
-[Installation](#installation) 
-[Supported Triggers](#supported-triggers) 
+[Contributing](#contributing)  
+[Installation](#installation)  
+[Supported Triggers](#supported-triggers)  
 [Supported Operations](#supported-operations)  
 [Credentials](#credentials)  
-[Usage](#usage)  
 [Version history](CHANGELOG.md)
 
 ## Contributing
