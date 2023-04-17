@@ -6,6 +6,7 @@ import { cronResourceDefinitions } from "./cron/Header";
 import { userResourceDefinitions } from "./user/Header";
 import { questResourceDefinitions } from "./quest/Header";
 import { groupResourceDefinitions } from "./group/Header";
+import { contentResourceDefinitions } from "./content/Header";
 
 export const allResourceDefinitions: IResourceDef[] = [
 	taskResourceDefinitions,
@@ -15,4 +16,5 @@ export const allResourceDefinitions: IResourceDef[] = [
 	userResourceDefinitions,
 	questResourceDefinitions,
 	groupResourceDefinitions,
+	contentResourceDefinitions,
 ];
