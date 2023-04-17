@@ -1,6 +1,7 @@
 import { IResourceDef } from "../common/CommonDefinitions";
 import { resourceContent } from "./ResourceName";
 import { getAllContentObjectsOperation, getAllContentObjectsParameters } from "./functions/ContentGetAllObjects";
+import { getGameWorldStateOperation, getGameWorldStateParameters } from "./functions/ContentGetWorldState";
 
 export const contentResourceDefinitions: IResourceDef = {
 	resource: resourceContent,
@@ -8,6 +9,10 @@ export const contentResourceDefinitions: IResourceDef = {
 		{
 			operation: getAllContentObjectsOperation,
 			parameters: getAllContentObjectsParameters,
+		},
+		{
+			operation: getGameWorldStateOperation,
+			parameters: getGameWorldStateParameters,
 		}
 	],
 };
