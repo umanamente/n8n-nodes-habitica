@@ -4,6 +4,7 @@ import { getAllTasksOperation, getAllTasksParameters } from "./functions/TaskGet
 import { scoreTaskOperation, scoreTaskParameters } from "./functions/TaskScore.node";
 import { IResourceDef } from "../common/CommonDefinitions";
 import { addTaskChecklistItemOperation, addTaskChecklistItemParameters } from "./functions/TaskAddChecklistItem";
+import { scoreTaskChecklistItemOperation, scoreTaskChecklistItemParameters } from "./functions/TaskScoreChecklistItem";
 
 export const taskResourceDefinitions: IResourceDef = {
 	resource: resourceTask,
@@ -23,6 +24,10 @@ export const taskResourceDefinitions: IResourceDef = {
 		{
 			operation: addTaskChecklistItemOperation,
 			parameters: addTaskChecklistItemParameters,
+		},
+		{
+			operation: scoreTaskChecklistItemOperation,
+			parameters: scoreTaskChecklistItemParameters,
 		},
 	],
 };
