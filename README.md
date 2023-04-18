@@ -1,18 +1,18 @@
-# n8n-nodes-habitica
+# <img src="nodes/Habitica/habitica-icon.svg"  height="40"> n8n-nodes-habitica
 
-This is an n8n community node. It lets you use Habitica in your n8n workflows.
+This is an n8n community node. It lets you use [Habitica](https://habitica.com) in your n8n workflows.
 
 Habitica is a free habit and productivity app that treats your real life like a game.   
 Earn points, unlock gear, and find motivation to keep going.
 
 ## Table of Contents
 
-[Contributing](#contributing)  
-[Installation](#installation)  
-[Supported Triggers](#supported-triggers)  
-[Supported Operations](#supported-operations)  
-[Credentials](#credentials)  
-[Version history](CHANGELOG.md)
+* [Contributing](#contributing)  
+* [Installation](#installation)  
+* [Supported Triggers](#supported-triggers)  
+* [Supported Operations](#supported-operations)  
+* [Credentials](#credentials)  
+* [Version history](CHANGELOG.md)
 
 ## Contributing
 
