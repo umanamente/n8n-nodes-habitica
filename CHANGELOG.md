@@ -1,3 +1,12 @@
+## [1.4.0](https://github.com/umanamente/n8n-nodes-habitica/compare/v1.3.0...v1.4.0) (2023-12-28)
+
+
+### Features
+
+* Added "Force-start a pending quest" ([a21f72f](https://github.com/umanamente/n8n-nodes-habitica/commit/a21f72f81b41521f3d4ea679bfefadda0f1b6c06))
+* Added "Get Group Info" ([3a90f0e](https://github.com/umanamente/n8n-nodes-habitica/commit/3a90f0e7688174767e625f9c20028fb18fa5a50f))
+* Added "Invite users to a quest" ([8a14742](https://github.com/umanamente/n8n-nodes-habitica/commit/8a147423fa2cdcb9dce27e2eb5b2fa9f658dee84))
+
 ## [1.3.0](https://github.com/umanamente/n8n-nodes-habitica/compare/v1.2.0...v1.3.0) (2023-04-17)
 
 
