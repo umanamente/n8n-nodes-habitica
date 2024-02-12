@@ -56,6 +56,7 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
   * Get user profile info
   * Get items available for purchase
   * Buy a Health Potion
+	* Equip or unequip an item
 * Chat messages
   * Send a chat message
   * Get all chat messages
