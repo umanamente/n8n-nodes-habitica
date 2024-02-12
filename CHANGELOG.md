@@ -1,3 +1,10 @@
+## [1.5.0](https://github.com/umanamente/n8n-nodes-habitica/compare/v1.4.0...v1.5.0) (2024-02-12)
+
+
+### Features
+
+* Added "Equip or Unequip an Item" ([8928c88](https://github.com/umanamente/n8n-nodes-habitica/commit/8928c881fc5cd649123a198c63cd1e3b4cffaf8b))
+
 ## [1.4.0](https://github.com/umanamente/n8n-nodes-habitica/compare/v1.3.0...v1.4.0) (2023-12-28)
 
 
