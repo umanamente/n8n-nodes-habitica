@@ -1,3 +1,10 @@
+## [1.6.0](https://github.com/umanamente/n8n-nodes-habitica/compare/v1.5.0...v1.6.0) (2024-08-01)
+
+
+### Features
+
+* Added filter by keys to "Get all available content objects" operation ([6b1e3e8](https://github.com/umanamente/n8n-nodes-habitica/commit/6b1e3e8b1aa44f17d8c99ad00f35a34f5b949997))
+
 ## [1.5.0](https://github.com/umanamente/n8n-nodes-habitica/compare/v1.4.0...v1.5.0) (2024-02-12)
 
 
