@@ -1,3 +1,10 @@
+## [1.7.0](https://github.com/umanamente/n8n-nodes-habitica/compare/v1.6.0...v1.7.0) (2024-08-09)
+
+
+### Features
+
+* added 'Conversation GUID' to 'Get Inbox Messages' operation ([8abab4b](https://github.com/umanamente/n8n-nodes-habitica/commit/8abab4b3335bb0ad1257cc6a806f4a34db21f35f))
+
 ## [1.6.0](https://github.com/umanamente/n8n-nodes-habitica/compare/v1.5.0...v1.6.0) (2024-08-01)
 
 
