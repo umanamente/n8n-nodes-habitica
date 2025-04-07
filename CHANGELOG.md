@@ -1,3 +1,10 @@
+## [1.8.0](https://github.com/umanamente/n8n-nodes-habitica/compare/v1.7.0...v1.8.0) (2025-04-07)
+
+
+### Features
+
+* added support for self-hosted Habitica ([adfe3f0](https://github.com/umanamente/n8n-nodes-habitica/commit/adfe3f0f5fd8dd20ebe394706d55dd0a26a5890f))
+
 ## [1.7.0](https://github.com/umanamente/n8n-nodes-habitica/compare/v1.6.0...v1.7.0) (2024-08-09)
 
 
