@@ -1,5 +1,13 @@
-import { IDataObject, IExecuteFunctions, IHookFunctions, ILoadOptionsFunctions, JsonObject, NodeApiError } from "n8n-workflow";
-import { OptionsWithUri } from "request";
+import {
+	IDataObject,
+	IExecuteFunctions,
+	IHookFunctions,
+	ILoadOptionsFunctions,
+	JsonObject,
+	NodeApiError,
+	IRequestOptions,
+	IHttpRequestMethods
+} from "n8n-workflow";
 
 export const HABITICA_API_BASE_URL = 'https://habitica.com/api/v3/';
 
@@ -7,7 +15,7 @@ export type Context = IHookFunctions | IExecuteFunctions | ILoadOptionsFunctions
 
 export async function habiticaApiRequest(
   this: Context,
-  method: string,
+  method: IHttpRequestMethods,
   resource: string,
   body: IDataObject = {},
   qs: IDataObject = {},
@@ -15,12 +23,15 @@ export async function habiticaApiRequest(
   const credentials = await this.getCredentials('habiticaApi');  
   const habiticaApiBaseUrl = credentials.useSelfHosted ? credentials.apiBaseUrl : HABITICA_API_BASE_URL;
 
-  const options: OptionsWithUri = {
-    method,
-    qs,
-    uri: `${habiticaApiBaseUrl}${resource}`,
-    json: true,
-  };
+	// Create URL as string
+	const url = `${habiticaApiBaseUrl}${resource}`;
+
+  const options: IRequestOptions = {
+		method,
+		qs,
+		json: true,
+		url,
+	};
 
   if (Object.keys(body).length !== 0) {
     options.body = body;
