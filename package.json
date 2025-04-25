@@ -53,7 +53,7 @@
     "conventional-changelog-conventionalcommits": "^5.0.0",
     "cross-env": "^7.0.3",
     "eslint-plugin-n8n-nodes-base": "^1.11.0",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.0",
     "n8n-core": "*",
     "n8n-workflow": "*",
     "prettier": "^2.7.1",
