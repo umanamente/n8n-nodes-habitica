@@ -1,15 +1,12 @@
-import {
-	IWebhookFunctions,
-} from 'n8n-core';
-
-import {
-	IDataObject,
+import type {
 	IHookFunctions,
+	IWebhookFunctions,
 	INodeType,
 	INodeTypeDescription,
+	IDataObject,
 	IWebhookResponseData,
-	NodeOperationError,
 } from 'n8n-workflow';
+import { NodeOperationError } from 'n8n-workflow';
 import { habiticaApiRequest } from './common/HabiticaApiRequest';
 import { triggerTaskActivityParameters, triggerTaskScored } from './triggers/TriggerTaskActivity';
 import { allEventDefinitions } from './triggers/Common';
@@ -176,7 +173,7 @@ export class HabiticaTrigger implements INodeType {
 
 		this.logger.debug('Webhook received: ' + JSON.stringify(req.body));
 		return {
-			workflowData: [this.helpers.returnJsonArray(req.body as IDataObject[])],
+			workflowData: [this.helpers.returnJsonArray(req.body as IDataObject)],
 		};
 	}
 }

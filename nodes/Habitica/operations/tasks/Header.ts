@@ -1,7 +1,7 @@
 import { createUserTaskOperation, createUserTaskParameters } from "./functions/TaskCreateForUser";
 import { resourceTask } from "./ResourceName";
 import { getAllTasksOperation, getAllTasksParameters } from "./functions/TaskGetMany";
-import { scoreTaskOperation, scoreTaskParameters } from "./functions/TaskScore.node";
+import { scoreTaskOperation, scoreTaskParameters } from "./functions/TaskScore";
 import { IResourceDef } from "../common/CommonDefinitions";
 import { addTaskChecklistItemOperation, addTaskChecklistItemParameters } from "./functions/TaskAddChecklistItem";
 import { scoreTaskChecklistItemOperation, scoreTaskChecklistItemParameters } from "./functions/TaskScoreChecklistItem";
