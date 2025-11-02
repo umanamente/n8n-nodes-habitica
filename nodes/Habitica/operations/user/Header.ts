@@ -4,25 +4,30 @@ import { buyHealthPotionsOperation, buyHealthPotionsParameters } from "./functio
 import { equipItemOperation, equipItemParameters } from "./functions/UserEquipItem";
 import { getUserProfileInfoOperation, getUserProfileInfoParameters } from "./functions/UserGetProfileInfo";
 import { getUserShopItemsOperation, getUserShopItemsParameters } from "./functions/UserGetShopItems";
+import { reviveOperation, reviveParameters } from "./functions/UserRevive";
 
 export const userResourceDefinitions: IResourceDef = {
-	resource: resourceUser,
-	operationDefs: [
-		{
-			operation: getUserProfileInfoOperation,
-			parameters: getUserProfileInfoParameters,
-		},
-		{
-			operation: getUserShopItemsOperation,
-			parameters: getUserShopItemsParameters,
-		},
-		{
-			operation: buyHealthPotionsOperation,
-			parameters: buyHealthPotionsParameters,
-		},
-		{
-			operation: equipItemOperation,
-			parameters: equipItemParameters,
-		}
-	],
+  resource: resourceUser,
+  operationDefs: [
+    {
+      operation: getUserProfileInfoOperation,
+      parameters: getUserProfileInfoParameters,
+    },
+    {
+      operation: getUserShopItemsOperation,
+      parameters: getUserShopItemsParameters,
+    },
+    {
+      operation: buyHealthPotionsOperation,
+      parameters: buyHealthPotionsParameters,
+    },
+    {
+      operation: equipItemOperation,
+      parameters: equipItemParameters,
+    },
+    {
+      operation: reviveOperation,
+      parameters: reviveParameters,
+    },
+  ],
 };
