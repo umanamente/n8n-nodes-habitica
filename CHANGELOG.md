@@ -1,3 +1,11 @@
+## [1.9.0](https://github.com/umanamente/n8n-nodes-habitica/compare/v1.8.0...v1.9.0) (2025-11-02)
+
+
+### Features
+
+* **Get many tasks:** added filtering options and field removal ([#4](https://github.com/umanamente/n8n-nodes-habitica/issues/4)) ([59b14a3](https://github.com/umanamente/n8n-nodes-habitica/commit/59b14a39e45ffca3ee6075ec80da44a38417b1ca))
+* **Revive User:** add "Revive User" operation ([#5](https://github.com/umanamente/n8n-nodes-habitica/issues/5)) ([8d19eee](https://github.com/umanamente/n8n-nodes-habitica/commit/8d19eeeae6ad312160572a0a86c4ae530ef40beb))
+
 ## [1.8.0](https://github.com/umanamente/n8n-nodes-habitica/compare/v1.7.0...v1.8.0) (2025-04-07)
 
 
