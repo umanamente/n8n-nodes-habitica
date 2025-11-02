@@ -1,5 +1,4 @@
-import { IDataObject, IExecuteFunctions, IHookFunctions, ILoadOptionsFunctions, JsonObject, NodeApiError } from "n8n-workflow";
-import { OptionsWithUri } from "request";
+import { IDataObject, IExecuteFunctions, IHookFunctions, IHttpRequestMethods, IHttpRequestOptions, ILoadOptionsFunctions, JsonObject, NodeApiError } from "n8n-workflow";
 
 export const HABITICA_API_BASE_URL = 'https://habitica.com/api/v3/';
 
@@ -7,7 +6,7 @@ export type Context = IHookFunctions | IExecuteFunctions | ILoadOptionsFunctions
 
 export async function habiticaApiRequest(
   this: Context,
-  method: string,
+  method: IHttpRequestMethods,
   resource: string,
   body: IDataObject = {},
   qs: IDataObject = {},
@@ -15,10 +14,10 @@ export async function habiticaApiRequest(
   const credentials = await this.getCredentials('habiticaApi');  
   const habiticaApiBaseUrl = credentials.useSelfHosted ? credentials.apiBaseUrl : HABITICA_API_BASE_URL;
 
-  const options: OptionsWithUri = {
+  const options: IHttpRequestOptions = {    
     method,
     qs,
-    uri: `${habiticaApiBaseUrl}${resource}`,
+    url: `${habiticaApiBaseUrl}${resource}`,
     json: true,
   };
 
@@ -29,7 +28,7 @@ export async function habiticaApiRequest(
 
 
   try {
-    const resp = await this.helpers.requestWithAuthentication.call(this, "habiticaApi", options);
+    const resp = await this.helpers.httpRequestWithAuthentication.call(this, "habiticaApi", options);
     if (resp.success === false) {
       throw new Error(`Habitica error response [${resource}]: ${JSON.stringify(resp)}`);
     } else {
